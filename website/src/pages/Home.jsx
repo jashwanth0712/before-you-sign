@@ -2,7 +2,7 @@ export default function Home() {
     return (
         <div>
             {/* Edit below code */}
-            <h1 className="font-grotesk text-text-primary text-center mt-20 max-w-4xl mx-auto">Join over 700 million registered users who trust Dropbox</h1>
+            <h1 className="font-unbounded text-text-primary text-center mt-20 max-w-3xl text-4xl leading-tight mx-auto">Join over 700 million registered users who trust Dropbox</h1>
             <p className="font-grotesk font-medium text-xl underline text-text-primary text-center mt-20">Dropbox Design Colors</p>
 
             <div className="p-20 flex flex-wrap gap-3">

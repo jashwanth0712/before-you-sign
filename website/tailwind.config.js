@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         grotesk: ['"Space Grotesk"', ...defaultTheme.fontFamily.sans],
+        unbounded: ['"Unbounded"', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: {
