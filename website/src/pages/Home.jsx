@@ -3,7 +3,7 @@ export default function Home() {
         <div>
             {/* Edit below code */}
             <h1 className="font-unbounded text-text-primary text-center mt-20 max-w-3xl text-4xl leading-tight mx-auto">Join over 700 million registered users who trust Dropbox</h1>
-            <p className="font-grotesk font-medium text-xl underline text-text-primary text-center mt-20">Dropbox Design Colors</p>
+            <p className="font-grotesk font-medium text-xl text-text-primary text-center mt-20">Dropbox Design Colors</p>
 
             <div className="p-20 flex flex-wrap gap-3">
                 <div className="text-xs font-medium h-28 w-28 grid place-content-center bg-accent-light">Accent Light</div>
