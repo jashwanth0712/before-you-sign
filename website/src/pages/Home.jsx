@@ -1,8 +1,13 @@
+import { useEffect } from 'react';
 import React from 'react';
-import logo from '../assets/images/giphy.gif'
-import './Homoe.js'
+import logo from '../assets/images/giphy.gif';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function Home() {
+    useEffect(() =>{
+        AOS.init({duration:1000});
+    },[])
     return (
         <div>
             {/* Edit below code */}
@@ -29,10 +34,22 @@ export default function Home() {
                 <div className="text-xs font-medium h-28 w-28 grid place-content-center bg-dropbox-pink">Pink</div>
             </div>
 
-            <section className="show-animate-{transform -translate-x-0}">
+            <section className="min-h-screen overflow-x-hidden">
                 <div className="flex justify-center items-center"><img src={logo} /></div>
-                <p className="font-grostek text-xl transform -translate-x-full text-center mt-4 transition duration-1000 min-h-screen">The above GIF tells you how the important points are getting highlighted.</p>
+                <p className="font-grostek text-xl text-center mt-40 color-white" data-aos="fade-left">The above GIF tells you how the important points are getting highlighted.</p> 
             </section>
+            
+            <section className="min-h-screen overflow-x-hidden">
+                <div className="flex justify-center items-center"><img src={logo} /></div>
+                <p className="font-grostek text-xl text-center mt-40 color-white" data-aos="fade-right">The above GIF tells you how the important points are getting highlighted.</p> 
+            </section>
+
+            <section className="min-h-screen overflow-x-hidden">
+                <div className="flex justify-center items-center"><img src={logo} /></div>
+                <p className="font-grostek text-xl text-center mt-40 color-white" data-aos="fade-up">The above GIF tells you how the important points are getting highlighted.</p> 
+            </section>
+
+            <script src="Homoe.js"></script>
         </div>
     );
 }
