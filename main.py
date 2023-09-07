@@ -21,7 +21,7 @@ def base_URL():
     return "Hello Dropbox!"
 
 
-@app.get("/action", response_model=ActionItems)
+@app.post("/action", response_model=ActionItems)
 def action_items():
     print("Processing the action items with data: ", str(scraped_data))
     sentences = action_function(scraped_data)
@@ -29,10 +29,3 @@ def action_items():
           str(sentences))
     return {"data": sentences}
 
-
-@app.post("/scraper")
-def scraper(req: ScrapedData):
-    print("Got the scraped data with the name: " + str(req.name))
-    global scraped_data
-    scraped_data = req.data
-    return {"message": "Data received! Call /action to get the action items."}
