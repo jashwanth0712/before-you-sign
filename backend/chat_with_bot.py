@@ -7,7 +7,6 @@ load_dotenv()
 # Set the OpenAI API key
 openai.api_key = os.getenv("OPENAI_KEY")
 
-
 def chat_with_openai(lists,init_text):
     """
     Send a series of messages to the OpenAI API and get a response.
@@ -20,7 +19,9 @@ def chat_with_openai(lists,init_text):
     Returns:
     - A string containing the assistant's response.
     """
-
+    print("Chatting with OpenAI...")
+    print(lists)
+    print(init_text)
     # Convert the list of lists to the desired format for the API
     messages = []
 
