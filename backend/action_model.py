@@ -1,33 +1,25 @@
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-from nltk.tokenize import sent_tokenize
-import nltk
-nltk.download('punkt')
+import os
+import openai
+import json
+from dotenv import load_dotenv
+
+load_dotenv()
+
+openai.api_key = os.getenv("OPENAI_KEY")
 
 
-def action_function(str):
-    legal_document = str
-    # load the legal document
-    # with open('sample.txt', 'r') as file:
-    #     legal_document = file.read()
 
-    # Tokenize sentences
-    sentences = sent_tokenize(legal_document)
+def action_function(legal_document_text):
 
-    # Create TF-IDF vectorizer
-    tfidf_vectorizer = TfidfVectorizer()
-    tfidf_matrix = tfidf_vectorizer.fit_transform(sentences)
+  completion = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=[{"role": "system","content":"Output all the key sentences that are really important in a legal perspective as a proper JSON array, say or do nothing else, just output the list"},
+              {"role": "user", "content":legal_document_text}],
+    temperature = 0.5
+  )
+  #returns output as a list
+  return json.loads(completion["choices"][0]["message"]["content"])
 
-    # Calculate cosine similarity between sentence vectors
-    cosine_similarities = cosine_similarity(tfidf_matrix)
-
-    # Identify the most important sentence using cosine similarity sum for each sentence
-    sentence_scores = cosine_similarities.sum(axis=1)
-    # print(sentence_scores)
-    # Choose the top N sentences as key sentences
-    num_key_sentences = 3  # Choose the number of key sentences you want
-    key_sentence_indices = sentence_scores.argsort()[-num_key_sentences:][::-1]
-
-    # Retrieve key sentences
-    key_sentences = [sentences[i] for i in key_sentence_indices]
-    return key_sentences
+# with open('sample.txt', 'r') as file:
+#   legal_document = file.read()
+#   print(get_action_sentences(legal_document))
