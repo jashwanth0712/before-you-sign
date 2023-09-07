@@ -23,7 +23,7 @@ def action_function(str):
 
     # Identify the most important sentence using cosine similarity sum for each sentence
     sentence_scores = cosine_similarities.sum(axis=1)
-    print(sentence_scores)
+    # print(sentence_scores)
     # Choose the top N sentences as key sentences
     num_key_sentences = 3  # Choose the number of key sentences you want
     key_sentence_indices = sentence_scores.argsort()[-num_key_sentences:][::-1]
