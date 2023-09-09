@@ -47,5 +47,5 @@ def highlight_text(image_path):
 
     return img_pil
 
-sexy_srav = image_to_base64("Divorce-Agreement-Sample.jpg")
-print(sexy_srav)
+# sexy_srav = image_to_base64("Divorce-Agreement-Sample.jpg")
+# print(sexy_srav)

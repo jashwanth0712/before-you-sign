@@ -1,7 +1,7 @@
 /* global chrome */
 import React from 'react';
 
-var data;
+var data = "";
 
 function Click(){
     console.log("Button clicked");
@@ -27,9 +27,10 @@ function Click(){
             const response = chrome.runtime.sendMessage({ action: "printDOM", document: data });
             console.log(response);
             // base 64 image
-            console.log(data);
+            //console.log(data);
+            localStorage.setItem("base64img", data);
         }
-        });
+        }); 
     });
 }
 
