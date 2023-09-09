@@ -20,7 +20,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <Button />
+      <Button/>
     </div>
   );
 }

@@ -6,7 +6,11 @@
     "48": "logo192.png",
    "128": "logo512.png"
   },
-  "permissions": ["tabs","activeTab", "scripting", "declarativeContent"],
+  "permissions": ["tabs","activeTab", "scripting", "declarativeContent", "script-src 'self' 'unsafe-eval'; object-src 'self'"],
+  "host_permissions": [
+    "https://*/*", 
+    "http://*/*"
+  ],
   "manifest_version": 3,
   "version": "0.0.1",
   "action": {
