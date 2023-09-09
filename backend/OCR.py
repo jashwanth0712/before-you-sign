@@ -46,6 +46,3 @@ def highlight_text(image_path):
     img_pil = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 
     return img_pil
-
-sexy_srav = image_to_base64("Divorce-Agreement-Sample.jpg")
-print(sexy_srav)

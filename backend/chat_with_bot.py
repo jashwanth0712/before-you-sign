@@ -20,8 +20,7 @@ def chat_with_openai(lists,init_text):
     - A string containing the assistant's response.
     """
     print("Chatting with OpenAI...")
-    # print(lists)
-    # print(init_text)
+    
     # Convert the list of lists to the desired format for the API
     messages = []
 
@@ -48,30 +47,30 @@ def chat_with_openai(lists,init_text):
 
 
 # Driver Code
-if __name__ == "__main__":
-    # Initial message list
-    messages_list = []
+# if __name__ == "__main__":
+#     # Initial message list
+#     messages_list = []
 
-    with open('sample.txt', 'r') as file:
-        legal_document = file.read()
-        while True:
-            # Get assistant's response based on the current message list
-            response = chat_with_openai(messages_list,legal_document)
+#     with open('sample.txt', 'r') as file:
+#         legal_document = file.read()
+#         while True:
+#             # Get assistant's response based on the current message list
+#             response = chat_with_openai(messages_list,legal_document)
 
-            # Display the assistant's response
-            print(f"Assistant: {response}")
+#             # Display the assistant's response
+#             print(f"Assistant: {response}")
 
-            # Add assistant's response to the list for context in future interactions
-            messages_list.append([0, response])
+#             # Add assistant's response to the list for context in future interactions
+#             messages_list.append([0, response])
 
-            # Get user input
-            user_message = input("You: ")
+#             # Get user input
+#             user_message = input("You: ")
 
-            # Add user message to the list
-            messages_list.append([1, user_message])
+#             # Add user message to the list
+#             messages_list.append([1, user_message])
 
-            # Check if user wants to continue
-            continue_chat = input("Continue chatting? (yes/no): ").strip().lower()
-            if continue_chat != "yes":
-                print("Goodbye!")
-                break
+#             # Check if user wants to continue
+#             continue_chat = input("Continue chatting? (yes/no): ").strip().lower()
+#             if continue_chat != "yes":
+#                 print("Goodbye!")
+#                 break
