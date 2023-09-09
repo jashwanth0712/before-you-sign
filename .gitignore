@@ -2,3 +2,5 @@ __*
 .vscode
 bys
 .env
+backend/base64*
+*.jpg

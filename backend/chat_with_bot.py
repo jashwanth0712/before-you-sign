@@ -20,8 +20,8 @@ def chat_with_openai(lists,init_text):
     - A string containing the assistant's response.
     """
     print("Chatting with OpenAI...")
-    print(lists)
-    print(init_text)
+    # print(lists)
+    # print(init_text)
     # Convert the list of lists to the desired format for the API
     messages = []
 

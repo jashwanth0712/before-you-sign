@@ -13,7 +13,10 @@ class ScrapedData(BaseModel):
     
 class SessionData(BaseModel):
     data: List[Tuple[int,str]]
-    
+    document: str
+
+class Base64(BaseModel):
+    image : str
 
 from fastapi_sessions.session_verifier import SessionVerifier
 from fastapi import HTTPException
