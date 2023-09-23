@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import HelloSign from 'hellosign-embedded';
 import env from "react-dotenv";
 const client = new HelloSign({
-  clientId: env.CLIENTID
+  clientId: "440a814b275dd6c92bf40c01efd20e65"
 });
 client.open('https://app.hellosign.com/sign/d48313d9c9b86f4cdd8189947f7b8dd9306c13ef', {
     testMode: true
