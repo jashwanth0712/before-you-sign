@@ -1,0 +1,204 @@
+[
+    {
+        "title": "Internship Contract",
+        "documentContent": [
+            {
+                "insertText": {
+                    "location": {
+                        "index": 1
+                    },
+                    "text": "Internship Contract\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 21
+                    },
+                    "text": "This Internship Agreement (the \"Agreement\") is made and entered into by and between:\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 107
+                    },
+                    "text": "[Company Name], a corporation organized and existing under the laws of [Company State], with its principal place of business located at [Company Address] (hereinafter referred to as the \"Company\"),\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 306
+                    },
+                    "text": "and\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 311
+                    },
+                    "text": "[Intern Name], an individual residing at [Intern Address] (hereinafter referred to as the \"Intern\").\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 413
+                    },
+                    "text": "Collectively, the Company and the Intern may be referred to herein as the \"Parties.\"\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 499
+                    },
+                    "text": "1. **Duration of Internship**\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 530
+                    },
+                    "text": "This internship shall commence on [Start Date] and continue until [End Date].\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 609
+                    },
+                    "text": "2. **Internship Responsibilities**\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 645
+                    },
+                    "text": "During the internship, the Intern will be responsible for the following:\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 719
+                    },
+                    "text": "- [List of Intern Responsibilities]\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 756
+                    },
+                    "text": "3. **Compensation**\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 777
+                    },
+                    "text": "The Company will provide the Intern with a monthly stipend of [Stipend Amount].\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 858
+                    },
+                    "text": "4. **Performance Review**\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 885
+                    },
+                    "text": "At the end of the internship, the Intern will receive a performance review from the Company.\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 979
+                    },
+                    "text": "5. **Governing Law**\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 1001
+                    },
+                    "text": "This internship contract is governed by the laws of the state of [State Name].\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 1081
+                    },
+                    "text": "6. **Contact Information**\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 1109
+                    },
+                    "text": "If you have any questions about this internship contract, please contact [Company Name] at [Company Email].\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 1218
+                    },
+                    "text": "By signing below, the Parties acknowledge and agree to the terms and conditions of this Internship Contract.\n\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 1328
+                    },
+                    "text": "Signature: ___________________________________    Date: __________________\n"
+                }
+            }
+        ]
+    },
+    {
+        "title": "Some Title",
+        "documentContent": [
+            {
+                "insertText": {
+                    "location": {
+                        "index": 1
+                    },
+                    "text": "Some Title"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 11
+                    },
+                    "text": "\n"
+                }
+            },
+            {
+                "insertText": {
+                    "location": {
+                        "index": 12
+                    },
+                    "text": "Some Content\n"
+                }
+            }
+        ]
+    }
+]
