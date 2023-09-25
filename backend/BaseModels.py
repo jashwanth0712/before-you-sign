@@ -20,6 +20,10 @@ class Base64(BaseModel):
 
 class Email(BaseModel):
     emails : List[str]
+
+class Prompt(BaseModel):
+    data : str
+    
 class BasicVerifier(SessionVerifier[UUID, SessionData]):
     def __init__(
         self,

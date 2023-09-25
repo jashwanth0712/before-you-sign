@@ -4,11 +4,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi_sessions.backends.implementations import InMemoryBackend
 from uuid import UUID,uuid4
 from action_model import action_function
-from BaseModels import ActionItems,SessionData, BasicVerifier, Base64, Email
+from BaseModels import ActionItems,SessionData, BasicVerifier, Base64, Email, Prompt
 from OCR import base64_to_text
 from chat_with_bot import chat_with_openai
 from emails import send_reminder_emails
 from typing import List, Optional
+from gdoc import generate_doc
+
+
 app = FastAPI()
 origins = ["*"]
 
@@ -90,3 +93,7 @@ def remind(signature_id:str, mail_list: Email):
         return "Reminder emails sent successfully\n"
     else:
         return "Unable to send emails. Please Try again\n"
+
+@app.post("/prompt", response_model=str, status_code=200)
+def remind(prompt: Prompt):
+    return generate_doc(prompt.data)
