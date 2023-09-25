@@ -20,6 +20,3 @@ def action_function(legal_document_text):
   #returns output as a list
   return json.loads(completion["choices"][0]["message"]["content"])
 
-# with open('sample.txt', 'r') as file:
-#   legal_document = file.read()
-#   print(get_action_sentences(legal_document))
