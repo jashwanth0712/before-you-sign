@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Navbar from './component/Navbar';
 import { useEffect } from 'react';
-
+import Highlighter from './pages/Highlighter';
 function App() {
   useEffect(() => {
     console.log('App mounted');
@@ -17,6 +17,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/highlighter/:id" element={<Highlighter />} />
         </Routes>
       </div>
     </Router>
