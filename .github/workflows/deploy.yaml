@@ -16,7 +16,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCLOUD_API_KEYFILE }}
+          export_default_credentials: true
+          
+      - name: Configure docker for GCP
+        run: gcloud auth configure-docker
       - name: Build and tag Docker image
         working-directory: backend
         run: |
@@ -24,14 +33,11 @@ jobs:
           docker build --cache-from sasankmadati/bys-backend:latest -t sasankmadati/bys-backend:latest .
           docker push sasankmadati/bys-backend
 
-      - name: Deploy to Google Cloud Run
 
+      - name: Deploy to Google Cloud Run
         env:
           GCLOUD_PROJECT_ID: ${{ secrets.GCLOUD_PROJECT_ID }}
           GCLOUD_SERVICE_NAME: dropbox
           DOCKER_IMAGE: sasankmadati/bys-backend:latest
         run: |
-          sudo echo ${{ secrets.GCLOUD_API_KEYFILE }} | base64 -d > ./gcloud-api-key.json
-          sudo gcloud auth activate-service-account --key-file=./gcloud-api-key.json
-          gcloud config set project $GCLOUD_PROJECT_ID
-          gcloud run deploy $GCLOUD_SERVICE_NAME --image $DOCKER_IMAGE --platform managed --region asia-south1 --allow-unauthenticated --port 8000 --set-env-vars OPENAI_KEY=${{ secrets.OPENAI_KEY }},INLINE_RUNTIME_CHUNK=${{ secrets.INLINE_RUNTIME_CHUNK }},EMAIL=${{ secrets.EMAIL }},GMAIL_PASSWORD=${{ secrets.GMAIL_PASSWORD }}
+          gcloud run deploy $GCLOUD_SERVICE_NAME --project ${{ secrets.GCLOUD_PROJECT_ID }} --image $DOCKER_IMAGE --platform managed --region asia-south1 --allow-unauthenticated --port 8000 --set-env-vars OPENAI_KEY=${{ secrets.OPENAI_KEY }},INLINE_RUNTIME_CHUNK=${{ secrets.INLINE_RUNTIME_CHUNK }},EMAIL=${{ secrets.EMAIL }},GMAIL_PASSWORD=${{ secrets.GMAIL_PASSWORD }}
