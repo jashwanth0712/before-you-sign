@@ -18,7 +18,8 @@ class SessionData(BaseModel):
 class Base64(BaseModel):
     image : str
 
-
+class Email(BaseModel):
+    emails : List[str]
 class BasicVerifier(SessionVerifier[UUID, SessionData]):
     def __init__(
         self,
