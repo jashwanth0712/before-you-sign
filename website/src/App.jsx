@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Navbar from './component/Navbar';
 import { useEffect } from 'react';
 import Highlighter from './pages/Highlighter';
+import Search from './pages/search';
 function App() {
   useEffect(() => {
     console.log('App mounted');
@@ -17,6 +18,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/highlighter/:id" element={<Highlighter />} />
         </Routes>
       </div>

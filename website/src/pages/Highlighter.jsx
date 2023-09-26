@@ -2,16 +2,16 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import HelloSign from 'hellosign-embedded';
 import env from "react-dotenv";
-const client = new HelloSign({
-  clientId: "440a814b275dd6c92bf40c01efd20e65"
-});
-client.open('https://app.hellosign.com/sign/d48313d9c9b86f4cdd8189947f7b8dd9306c13ef', {
-    testMode: true
-  });
+// const client = new HelloSign({
+//   clientId: "440a814b275dd6c92bf40c01efd20e65"
+// });
+// client.open('https://app.hellosign.com/sign/d48313d9c9b86f4cdd8189947f7b8dd9306c13ef', {
+//     testMode: true
+//   });
   
-  client.on('sign', () => {
-    alert('The document has been signed!');
-  });
+//   client.on('sign', () => {
+//     alert('The document has been signed!');
+//   });
 export default function Highlighter() {
     const { id } = useParams();
     
