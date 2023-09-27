@@ -1,16 +1,20 @@
 {
-  "short_name": "Your Extension Name",
-  "name": "Your Extension Name",
-  "icons": {
-    "16": "logo_blue.ico",
-    "48": "logo192.png",
-   "128": "logo512.png"
+  "name": "square extension",
+  "version": "0.1.0",
+  "description": "creating store layout",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://www.dropbox.com/*"],
+  "background": {
+    "service_worker": "background.js"
   },
-  "permissions": [],
-  "manifest_version": 2,
-  "version": "0.0.1",
-  "browser_action": {
-    "default_popup": "index.html",
-    "default_title": "Your Extension Name"
-  }
+  "content_scripts": [
+    {
+      "matches": ["https://www.dropbox.com/home/*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "action": {
+    "default_title": "Open the feature extension"
+  },
+  "manifest_version": 3
 }
