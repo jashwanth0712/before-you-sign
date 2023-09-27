@@ -8,7 +8,7 @@ const client = new HelloSign({
 client.open('https://app.hellosign.com/sign/d48313d9c9b86f4cdd8189947f7b8dd9306c13ef', {
     testMode: true
   });
-  
+  console.log("c : ",client)
   client.on('sign', () => {
     alert('The document has been signed!');
   });
