@@ -5,6 +5,7 @@ const Search = () => {
   const [inputValue, setInputValue] = useState('');
   const [buttontext, setButtonText] = useState('Generate');
   const [generatedText, setGeneratedText] = useState('');
+  const [document, setDocumentLink] = useState('');
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -12,7 +13,8 @@ const Search = () => {
 
   async function handleGenerateClick(){
     const data = await sendprompt()
-    console.log(data);
+    console.log(document+"1");
+    console.log(data+"2");
     if (buttontext === 'Generate' && inputValue.trim() === '') {
       alert('Please enter text before generating the iframe.');
       return; // Don't proceed if input is empty for the first generation
@@ -42,6 +44,7 @@ const Search = () => {
       }).then((response) => {
           return response.json();
       }).then(data => {
+          setDocumentLink(data);
           console.log(data);
       });
 
@@ -77,11 +80,6 @@ const Search = () => {
           {buttontext}
         </button>
       </div>
-  
-      
-
-
-
      
 {showImages && (
   <div className="mt-[5px] w-full"style={{ backgroundColor: '#18181b' }}>
@@ -94,9 +92,10 @@ const Search = () => {
 
     <div className='flex flex-col items-center'>
       <iframe
-        src="https://docs.google.com/document/d/e/2PACX-1vT7b81zOcpfsy1CRp2j-rquQkZL_qFZRZjD1CUQId4-JkxXM4ekRJnbTvPtVHmwfoSjnGuB5VIEgUh4/pub?embedded=true"
-        width="400"
-        height="600"
+        src={document}
+        title='Document'
+        width="800"
+        height="800"
         frameBorder="10px"
         marginHeight="0"
         marginWidth="0"
