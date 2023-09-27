@@ -11,8 +11,8 @@ const Search = () => {
   };
 
   async function handleGenerateClick(){
-     const data = await sendprompt()
-
+    const data = await sendprompt()
+    console.log(data);
     if (buttontext === 'Generate' && inputValue.trim() === '') {
       alert('Please enter text before generating the iframe.');
       return; // Don't proceed if input is empty for the first generation
@@ -31,10 +31,9 @@ const Search = () => {
   };
 
   async function sendprompt() {
-    async function getUserData() {
       const requestBody = {data:"prompt"}
   
-      await fetch('', {
+      await fetch('https://dropbox-f26yqhtsoa-el.a.run.app/prompt', {
           method: 'POST', // Change the request method to POST
           headers: {
               "Content-Type": "application/json", // Specify the content type as JSON
@@ -45,8 +44,7 @@ const Search = () => {
       }).then(data => {
           console.log(data);
       });
-  }
-  
+
 }
   
 
