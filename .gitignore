@@ -4,3 +4,5 @@ bys
 .env
 backend/base64*
 *.jpg
+credentials.json
+token.json
