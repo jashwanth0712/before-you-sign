@@ -1,4 +1,5 @@
 import logo from '../assets/images/logo_white.png';
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
     return (
@@ -14,6 +15,7 @@ export default function Navbar() {
                         <p className="font-grotesk font-medium text-base text-text-primary mr-5">About</p>
                         <p className="font-grotesk font-medium text-base text-text-primary mr-5">Blog</p>
                         <p className="font-grotesk font-medium text-base text-text-primary mr-5">Contact</p>
+                        <Link to='/search'><p className="font-grotesk font-medium text-base text-text-primary mr-5">Generate</p></Link>
                     </div>
                 </div>
             </nav>
