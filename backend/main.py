@@ -8,8 +8,9 @@ from BaseModels import ActionItems,SessionData, BasicVerifier, Base64, Email, Pr
 from OCR import base64_to_text
 from chat_with_bot import chat_with_openai
 from emails import send_reminder_emails
-from typing import List, Optional
+from create_legal_document import create_legal_document
 from gdoc import generate_doc
+import time
 
 
 app = FastAPI()
@@ -50,13 +51,20 @@ verifier = BasicVerifier(
 def base_URL():
     return "Hello Dropbox!\n"
 
-@app.post("/base64", response_model=ActionItems, status_code=201)
+@app.post("/action", response_model=list[str], status_code=201)
 def get_image(image:Base64):
+    # store start time
+    # start_time = time.time()
     global text_from_image
     #print(image)
     text_from_image = base64_to_text(image.image)
+    # base64_time = time.time() - start_time
+    # print("Time taken for base64 to text conversion: ", base64_time)
+    # start_time = time.time()
     sentences = action_function(text_from_image)
-    return {"data": sentences}
+    # gpt_time = time.time() - start_time
+    # print("Time taken for GPT-3 to generate action sentences is: ", gpt_time)
+    return sentences
 
 
 @app.post("/lawyer", response_model=str, status_code=201)
@@ -94,6 +102,9 @@ def remind(signature_id:str, mail_list: Email):
     else:
         return "Unable to send emails. Please Try again\n"
 
-@app.post("/prompt", response_model=str, status_code=200)
+@app.post("/generate", response_model=str, status_code=200)
 def remind(prompt: Prompt):
+    # print(prompt.data)
+    # legal_doc_data = create_legal_document(prompt.data)
+    # print(legal_doc_data)
     return generate_doc(prompt.data)
