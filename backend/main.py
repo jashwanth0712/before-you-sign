@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi_sessions.backends.implementations import InMemoryBackend
 from uuid import UUID,uuid4
 from action_model import action_function
-from BaseModels import ActionItems,SessionData, BasicVerifier, Base64, Email, Prompt,UserData,LegalDocument
+from BaseModels import SessionData, BasicVerifier, Base64, Email, Prompt
 from OCR import base64_to_text
 from chat_with_bot import chat_with_openai
 from emails import send_reminder_emails
@@ -30,7 +30,7 @@ cookie = SessionCookie(
     cookie_name="cookie",
     identifier="general_verifier",
     auto_error=False,
-    secret_key="DONOTUSE",
+    secret_key="VERYSECRETKEY...",
     cookie_params=cookie_params,
 )
 
@@ -68,8 +68,7 @@ def get_image(image:Base64):
 
 
 @app.post("/lawyer", response_model=str, status_code=201)
-async def lawyer(user_data:Annotated[str, Body()], response: Response, legal_document: Annotated[str, Body()]= None,  session_id: UUID = Depends(cookie)):
-    # Delete the existing session
+async def lawyer(user_data:Annotated[str, Body()], response: Response, legal_document: Annotated[str, Body()] = None,  session_id: UUID = Depends(cookie)):
     existing_session_data = await session_backend.read(session_id)
 
     if existing_session_data is not None:
