@@ -9,6 +9,10 @@ from fastapi import HTTPException
 class ActionItems(BaseModel):
     data: list[str]
 
+class UserData(BaseModel):
+    user_data: str
+class LegalDocument(BaseModel):
+    legal_document: str
 # model for storing session data in a structure way in the memory    
 class SessionData(BaseModel):
     data: List[Tuple[int,str]]

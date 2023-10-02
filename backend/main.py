@@ -1,16 +1,16 @@
-from fastapi import Response, FastAPI, HTTPException, Depends, HTTPException
+from fastapi import Response, FastAPI, HTTPException, Depends, HTTPException, Body
 from fastapi_sessions.frontends.implementations import SessionCookie, CookieParameters
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi_sessions.backends.implementations import InMemoryBackend
 from uuid import UUID,uuid4
 from action_model import action_function
-from BaseModels import ActionItems,SessionData, BasicVerifier, Base64, Email, Prompt
+from BaseModels import ActionItems,SessionData, BasicVerifier, Base64, Email, Prompt,UserData,LegalDocument
 from OCR import base64_to_text
 from chat_with_bot import chat_with_openai
 from emails import send_reminder_emails
 from create_legal_document import create_legal_document
 from gdoc import generate_doc
-import time
+from typing import Annotated
 
 
 app = FastAPI()
@@ -68,7 +68,7 @@ def get_image(image:Base64):
 
 
 @app.post("/lawyer", response_model=str, status_code=201)
-async def lawyer(user_data: str, response: Response, legal_document: str | None = None,  session_id: UUID = Depends(cookie)):
+async def lawyer(user_data:Annotated[str, Body()], response: Response, legal_document: Annotated[str, Body()]= None,  session_id: UUID = Depends(cookie)):
     # Delete the existing session
     existing_session_data = await session_backend.read(session_id)
 
