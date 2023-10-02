@@ -9,7 +9,7 @@ from OCR import base64_to_text
 from chat_with_bot import chat_with_openai
 from emails import send_reminder_emails
 from create_legal_document import create_legal_document
-from gdoc import generate_doc
+from create_docs import generate_google_docs_from_markdown
 from typing import Annotated
 
 
@@ -103,7 +103,5 @@ def remind(signature_id:str, mail_list: Email):
 
 @app.post("/generate", response_model=str, status_code=200)
 def remind(prompt: Prompt):
-    # print(prompt.data)
-    # legal_doc_data = create_legal_document(prompt.data)
-    # print(legal_doc_data)
-    return generate_doc(prompt.data)
+    legal_doc_data = create_legal_document(prompt.data)
+    return generate_google_docs_from_markdown(legal_doc_data)
