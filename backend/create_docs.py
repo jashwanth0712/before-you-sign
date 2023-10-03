@@ -166,7 +166,7 @@ def update_text_with_format(format, start_index, end_index):
         }
     }
 
-def generate_google_docs_from_markdown(markdown_text):
+def generate_google_docs_from_markdown(markdown_text,creds):
     """Generates Google Docs from Markdown text.
 
     Args:
@@ -175,20 +175,20 @@ def generate_google_docs_from_markdown(markdown_text):
     Returns:
     A string containing the Google Doc link.
     """
-    load_dotenv()
-    Credentials = os.getenv("GOOGLE_DOCS_CREDENTIALS")
-    creds_json = base64.b64decode(Credentials.encode('utf-8')).decode('utf-8')
-    flow = InstalledAppFlow.from_client_config(
-    json.loads(creds_json), SCOPES) 
-    creds = flow.run_local_server(port=0)
-    # Create a Google Docs service object.
+    # load_dotenv()
+    # Credentials = os.getenv("GOOGLE_DOCS_CREDENTIALS")
+    # creds_json = base64.b64decode(Credentials.encode('utf-8') + b'==').decode('utf-8')
+    # flow = InstalledAppFlow.from_client_config(
+    # json.loads(creds_json), SCOPES) 
+    # creds = flow.run_local_server(port=0)
+    # # Create a Google Docs service object.
     service = build('docs', 'v1', credentials=creds)
     # Create a google drive service object.
     drive_service = build('drive', 'v3', credentials=creds)
     # Split the markdown text into sections based on headings
     sections = re.split(r'(^#{1,6} .*$)', markdown_text, flags=re.MULTILINE)
 
-    print(sections)
+    # print(sections)
 
     # Extract the title from the first line
     title = sections[1].strip().replace('#', '')
@@ -282,7 +282,7 @@ def generate_google_docs_from_markdown(markdown_text):
     return google_doc_link
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     # # Read the JSON data from the file.
     # with open('data.json') as json_file:
     #     json_data = json_file.read()
@@ -292,7 +292,7 @@ if __name__ == "__main__":
     
     # # Print the Google Doc links.
     # print(google_doc_links)
-    print(generate_google_docs_from_markdown(markdown_sample_text))
+    # print(generate_google_docs_from_markdown(markdown_sample_text))
 
 # The linke generated can be used as it is in the iframe
 # Format:
