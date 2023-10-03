@@ -3,10 +3,11 @@ import React from 'react';
 import logo from '../assets/images/giphy.gif';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import './Home.css'
 
 export default function Home() {
     useEffect(() =>{
-        AOS.init({duration:1000});
+        AOS.init({duration:500});
     },[])
     return (
         <div>
@@ -42,19 +43,37 @@ export default function Home() {
                 <p className="font-grostek text-xl text-center mt-40 color-white mx-10" data-aos="fade-up">The above GIF tells you how the important points are getting highlighted.</p> 
             </section>
 
-            <div className='grid grid-cols-2 w- full featuresDiv pr-5 pl-5 bg-gradient-to-r from-black via-gray-900 to-gray-15'>
-                <div className='rounded-lg m-1 btn-selected !bg-opacity-0 feat-bg text-white padding-box border-2 border-transparent bg-gradient-to-r from-black via-gray-900 to-gray-15 bg-origin-border bg-clip-content'>
-                    <h4 className='tracking-normal text-left flex feat-d-h'>Modular Integration</h4>
-                    <p className='pb-10 feat-d-p'>Compose dApps on top of each other</p>
+            <div className='grid grid-cols-2 w- full featuresDiv ml-40 mr-40'>
+                <div className='rounded-lg m-1 btn-selected !bg-opacity-0 feat-bg border-white border-2' data-aos="fade-up">
+                    <h4 className='tracking-normal text-left flex feat-d-h text-[33px] pl-20'>Modular Integration</h4>
+                    <p className='pb-10 feat-d-p pl-20'>Compose dApps on top of each other</p>
+                </div>
+                <div className='rounded-lg m-1 btn-selected !bg-opacity-0 feat-bg border-white border-2' data-aos="fade-up">
+                    <h4 className='tracking-normal text-left flex feat-d-h text-[33px] pl-20'>Modular Integration</h4>
+                    <p className='pb-10 feat-d-p pl-20'>Compose dApps on top of each other</p>
+                </div>
+                <div className='rounded-lg m-1 btn-selected !bg-opacity-0 feat-bg border-white border-2' data-aos="fade-up">
+                    <h4 className='tracking-normal text-left flex feat-d-h text-[33px] pl-20'>Modular Integration</h4>
+                    <p className='pb-10 feat-d-p pl-20'>Compose dApps on top of each other</p>
+                </div>
+                <div className='rounded-lg m-1 btn-selected !bg-opacity-0 feat-bg border-white border-2' data-aos="fade-up">
+                    <h4 className='tracking-normal text-left flex feat-d-h text-[33px] pl-20'>Modular Integration</h4>
+                    <p className='pb-10 feat-d-p pl-20'>Compose dApps on top of each other</p>
+                </div>
+                <div className='rounded-lg m-1 btn-selected !bg-opacity-0 feat-bg border-white border-2' data-aos="fade-up">
+                    <h4 className='tracking-normal text-left flex feat-d-h text-[33px] pl-20'>Modular Integration</h4>
+                    <p className='pb-10 feat-d-p pl-20'>Compose dApps on top of each other</p>
+                </div>
+                <div className='rounded-lg m-1 btn-selected !bg-opacity-0 feat-bg border-white border-2' data-aos="fade-up">
+                    <h4 className='tracking-normal text-left flex feat-d-h text-[33px] pl-20'>Modular Integration</h4>
+                    <p className='pb-10 feat-d-p pl-20'>Compose dApps on top of each other</p>
                 </div>
             </div>
 
-            <section className="min-h-screen overflow-x-hidden">
+            <section className="min-h-screen overflow-x-hidden mt-40">
                 <div className="flex justify-center items-center"><img src={logo} alt='loading gif'/></div>
                 <p className="font-grostek text-xl text-center mt-40 color-white mx-10" data-aos="fade-up">The above GIF tells you how the important points are getting highlighted.</p> 
             </section>
-
-
         </div>
     );
 }
