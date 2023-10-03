@@ -7,10 +7,12 @@ from action_model import action_function
 from BaseModels import SessionData, BasicVerifier, Base64, Email, Prompt
 from OCR import base64_to_text
 from chat_with_bot import chat_with_openai
+import os,base64,json
 from emails import send_reminder_emails
 from create_legal_document import create_legal_document
-from gdoc import generate_doc
+from create_docs import generate_google_docs_from_markdown
 from typing import Annotated
+from google_auth_oauthlib.flow import Flow
 
 
 app = FastAPI()
@@ -101,9 +103,88 @@ def remind(signature_id:str, mail_list: Email):
     else:
         return "Unable to send emails. Please Try again\n"
 
+@app.post("/auth", response_model=str, status_code=200)
+def auth_google():
+    Credentials = os.getenv("GOOGLE_DOCS_CREDENTIALS")
+    creds_json = base64.b64decode(Credentials.encode('utf-8') + b'==').decode('utf-8')
+    creds_json = json.loads(creds_json)
+    AUTH_CALLBACK_URL ="https://dropbox-4zxc4m7upa-el.a.run.app/callback"
+    SCOPES = ['https://www.googleapis.com/auth/documents', 'https://www.googleapis.com/auth/drive']
+    global flow
+    flow = Flow.from_client_config(
+    creds_json,
+    scopes=SCOPES,
+    redirect_uri=AUTH_CALLBACK_URL)
+    return flow.authorization_url()[0]
+
 @app.post("/generate", response_model=str, status_code=200)
-def remind(prompt: Prompt):
-    # print(prompt.data)
+def generate_doc(prompt: Prompt):
+    global flow,access_token,creds,md
     # legal_doc_data = create_legal_document(prompt.data)
-    # print(legal_doc_data)
-    return generate_doc(prompt.data)
+    return generate_google_docs_from_markdown(md,creds)
+
+@app.get("/callback")
+def callback(state,code):
+    print(state,code)
+    global flow,access_token,creds,md
+    access_token = flow.fetch_token(code=code)
+    creds = flow.credentials
+    md = """
+    # Rental Agreement
+
+This Rental Agreement (the "Agreement") is made and entered into on this __day of __month, __year, (the "Effective Date") between the landlord, [your name], (the "Landlord") and the tenant, Sasank, (the "Tenant").
+
+## 1. Property Details
+
+The Landlord agrees to rent the following property to the Tenant:
+
+- Address: [Property Address]
+- City: [City]
+- State: [State]
+- Postal Code: [Postal Code]
+
+## 2. Term of Lease
+
+The term of this lease agreement shall be for a period of _6 months_, commencing on the __day of __month, __year, and terminating on the __day of __month, __year (the "Lease Term").
+
+## 3. Rent
+
+The Tenant agrees to pay a monthly rent of _5000 USD_ to the Landlord. Rent shall be due on the _1st_ day of each month. Payment shall be made in the form of _[payment method]_.
+
+## 4. Security Deposit
+
+The Tenant shall provide a security deposit of _10000 USD_ to the Landlord. This deposit shall be held by the Landlord as security for the Tenant's obligations under this Agreement, including any damages to the property beyond normal wear and tear. The security deposit will be returned to the Tenant within _[number of days]_ after the termination of this Agreement, less any deductions for damages or unpaid rent.
+
+## 5. Maintenance and Repairs
+
+The Tenant shall maintain the property in a clean and sanitary condition and promptly notify the Landlord of any necessary repairs or maintenance. The Tenant shall be responsible for any damages caused by their negligence or misuse of the property.
+
+## 6. Termination
+
+Either party may terminate this Agreement before the end of the Lease Term by providing a written notice of _[number of days]_ days. In the event of early termination by the Tenant, the Tenant shall remain liable for the rent until the end of the notice period or until a new tenant is found, whichever occurs first.
+
+## 7. Governing Law
+
+This Agreement shall be governed by and construed in accordance with the laws of the state of [State]. Any disputes arising under or in connection with this Agreement shall be subject to the exclusive jurisdiction of the courts of [City], [State].
+
+## 8. Entire Agreement
+
+This Agreement constitutes the entire agreement between the Landlord and the Tenant and supersedes all prior agreements, understandings, and representations. Any modifications to this Agreement must be in writing and signed by both parties.
+
+IN WITNESS WHEREOF, the Landlord and the Tenant have executed this Rental Agreement as of the Effective Date.
+
+Landlord:
+[Your Name]
+[Your Address]
+[City], [State]
+[Phone Number]
+[Email Address]
+
+Tenant:
+Sasank
+[Tenant's Address]
+[City], [State]
+[Phone Number]
+[Email Address]
+"""
+    return "You may close this window now."
