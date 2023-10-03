@@ -166,7 +166,7 @@ def update_text_with_format(format, start_index, end_index):
         }
     }
 
-def generate_google_docs_from_markdown(markdown_text):
+def generate_google_docs_from_markdown(markdown_text,creds):
     """Generates Google Docs from Markdown text.
 
     Args:
@@ -175,13 +175,13 @@ def generate_google_docs_from_markdown(markdown_text):
     Returns:
     A string containing the Google Doc link.
     """
-    load_dotenv()
-    Credentials = os.getenv("GOOGLE_DOCS_CREDENTIALS")
-    creds_json = base64.b64decode(Credentials.encode('utf-8')).decode('utf-8')
-    flow = InstalledAppFlow.from_client_config(
-    json.loads(creds_json), SCOPES) 
-    creds = flow.run_local_server(port=0)
-    # Create a Google Docs service object.
+    # load_dotenv()
+    # Credentials = os.getenv("GOOGLE_DOCS_CREDENTIALS")
+    # creds_json = base64.b64decode(Credentials.encode('utf-8') + b'==').decode('utf-8')
+    # flow = InstalledAppFlow.from_client_config(
+    # json.loads(creds_json), SCOPES) 
+    # creds = flow.run_local_server(port=0)
+    # # Create a Google Docs service object.
     service = build('docs', 'v1', credentials=creds)
     # Create a google drive service object.
     drive_service = build('drive', 'v3', credentials=creds)

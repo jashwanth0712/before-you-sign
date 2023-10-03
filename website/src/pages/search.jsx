@@ -12,6 +12,7 @@ const Search = () => {
   };
 
   async function handleGenerateClick(){
+    await get_auth()
     const data = await sendprompt()
     console.log(data)
     if (buttontext === 'Generate' && inputValue.trim() === '') {
@@ -47,6 +48,21 @@ const Search = () => {
           console.log(data);
       });
 
+}
+
+async function get_auth() {
+  // console.log("Req body is",requestBody);
+  await fetch('https://dropbox-4zxc4m7upa-el.a.run.app/auth', {
+      method: 'POST',
+      headers: {
+          "Content-Type": "application/json",
+      },
+  }).then((response) => {
+    return response.json();
+}).then(data => {
+  const openwindow = window.open(data, '_blank');
+    console.log(data);
+});
 }
   
 
