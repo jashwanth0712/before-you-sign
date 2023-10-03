@@ -1,0 +1,11 @@
+.btn-selected
+{
+    background: linear-gradient(200deg,#0f0f0f,#000) padding-box,
+                        conic-gradient(#555,#222,#222,#b0b0b0,#222,#b0b0b0,#555) border-box;
+    border: 2px solid transparent;
+    color: #fff;
+    opacity: 1;
+    mix-blend-mode: screen;
+    box-shadow: none;
+    pointer-events: none;
+}

@@ -27,8 +27,10 @@ def chat_with_openai(lists,init_text):
     messages.append({"role": "system","content":"You are a legal chatbot that is designed to help a user understand "
                                                 "the nuances of a legal document, read the document attached in this "
                                                 "message and answer all the queries of the user clearly, remember to "
-                                                "always act like the legal chatbot that you are and start with a "
-                                                "welcome message to the user by summarizing the key nuances of the "
+                                                "always act like the legal chatbot that you are, always answer the question of "
+                                                "the user to the point and do not include information they didn't ask"
+                                                "unless they explicitly asked to explain and start with a very small and brief"
+                                                "welcome message to the user by summarizing only the very key nuances of the "
                                                 "document  Document:"+init_text})
 
     for item in lists:
