@@ -10,7 +10,7 @@ from google.cloud import texttospeech
 client = texttospeech.TextToSpeechClient()
 
 # Set the text input to be synthesized
-synthesis_input = texttospeech.SynthesisInput(text="Zscaler enables the world’s leading organizations to securely transform their networks and applications for a mobile and cloud-first world. Applications have moved from the data center to the cloud and users are connecting to their workloads from everywhere, but security has remained anchored to the data center. Zscaler is redefining security by moving it out of the data center and into the cloud.")
+synthesis_input = texttospeech.SynthesisInput(text="Zscaler enables the world’s leading organizations.")
 
 # Build the voice request, select the language code ("en-US") and the ssml
 # voice gender ("neutral")

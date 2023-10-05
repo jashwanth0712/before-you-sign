@@ -1,4 +1,4 @@
-from fastapi import Response, FastAPI, HTTPException, Depends, HTTPException, Body
+from fastapi import Response, FastAPI, HTTPException, Depends, HTTPException, Body,File, UploadFile
 from fastapi_sessions.frontends.implementations import SessionCookie, CookieParameters
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi_sessions.backends.implementations import InMemoryBackend
@@ -8,12 +8,14 @@ from BaseModels import SessionData, BasicVerifier, Base64, Email, Prompt
 from OCR import base64_to_text
 from chat_with_bot import chat_with_openai
 import os,base64,json
+import tempfile
 from emails import send_reminder_emails
 from create_legal_document import create_legal_document
 from create_docs import generate_google_docs_from_markdown
 from typing import Annotated
+import requests,aiofiles
+from google.cloud import storage
 from google_auth_oauthlib.flow import Flow
-
 
 app = FastAPI()
 origins = ["*"]
@@ -188,3 +190,59 @@ Sasank
 [Email Address]
 """
     return "You may close this window now."
+
+@app.post("/audio")
+async def put_audio(file: UploadFile = File(...),exp_time: int | None = 3600):
+    """ Uploads the file from Creates a signed URL for an object in a Google Cloud Storage bucket.
+
+    Args:
+        file : a uniquely named mp3 audio file
+        expiration_time: The expiration time for the signed URL in seconds.
+
+    Returns:
+        A signed URL for the object which can be "curl-ed" or opened in a browser to download the file
+    """
+    bucket_name = os.getenv("BUCKET_NAME")
+    try:
+        contents = file.file.read()
+        with open(file.filename, 'wb') as f:
+            f.write(contents)
+        print("File written successfully")
+    except Exception:
+        return {"message": "There was an error uploading the file. Please try again"}
+    finally:
+        file.file.close()
+    storage_client = storage.Client()
+    object_name = file.filename
+    blob = storage_client.bucket(bucket_name).blob(object_name)
+
+    # upload the file to s3 bucket
+    with open(file.filename, "rb") as f:
+        f.seek(0)
+        content = f.read()
+        audio_data_bytes = bytearray(content)
+        print(type(audio_data_bytes))
+        f.seek(0)
+        blob.upload_from_file(f)
+        
+
+    f.close()
+    
+    print("File uploaded to {}.".format(bucket_name))
+    bucket_creds = os.getenv("BUCKET_CREDENTIALS")
+    s3_creds = base64.b64decode(bucket_creds.encode('utf-8') + b'==').decode('utf-8')
+    print(s3_creds)
+    with open("file.json","wb") as creds_file:
+        creds_file.write(s3_creds.encode('utf-8'))
+        creds_file.seek(0)
+        storage_client = storage.Client.from_service_account_json(creds_file.name)
+        blob = storage_client.bucket(bucket_name).blob(object_name)
+
+        signed_url = blob.generate_signed_url(
+            expiration=exp_time, version="v4", method="GET"
+        )
+        doc = requests.get(signed_url)
+        with open('from_bucket.mp3', 'wb') as f:
+            f.write(doc.content)
+            print("Audio successfully Fetched from the URL\n")
+        return signed_url
