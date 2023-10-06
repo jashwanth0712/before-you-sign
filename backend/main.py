@@ -3,14 +3,14 @@ from fastapi_sessions.frontends.implementations import SessionCookie, CookiePara
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi_sessions.backends.implementations import InMemoryBackend
 from uuid import UUID,uuid4
-from action_model import action_function
+from action_model_palm import action_function
 from BaseModels import SessionData, BasicVerifier, Base64, Email, Prompt
 from OCR import base64_to_text
-from chat_with_bot import chat_with_openai
+from chat_with_bot_palm import chat_with_palm
 import os,base64,json
 import tempfile
 from emails import send_reminder_emails
-from create_legal_document import create_legal_document
+from create_legal_document_palm import create_legal_document
 from create_docs import generate_google_docs_from_markdown
 from typing import Annotated
 import requests,aiofiles
@@ -79,7 +79,7 @@ async def lawyer(user_data:Annotated[str, Body()], response: Response, legal_doc
         # Session already exists, update the data
         existing_data = existing_session_data.data
         existing_data.extend([(1,user_data)])
-        gpt_data = chat_with_openai(existing_data,existing_session_data.document)
+        gpt_data = chat_with_palm(existing_data,existing_session_data.document)
         existing_data.extend([(0,gpt_data)])
         await session_backend.update(session_id, SessionData(data=existing_data,document=existing_session_data.document))
         print("Updated session successfully\n")
@@ -88,7 +88,7 @@ async def lawyer(user_data:Annotated[str, Body()], response: Response, legal_doc
         return existing_data[-1][-1]
     else:
         # Session doesn't exist, create a new session
-        gpt_data = chat_with_openai([],legal_document)
+        gpt_data = chat_with_palm([],legal_document)
         init_data = (0,gpt_data)
         user_session = uuid4()
         new_data = SessionData(data=[init_data], document=legal_document)
@@ -123,7 +123,10 @@ def auth_google():
 def generate_doc(prompt: Prompt):
     global flow,access_token,creds,md
     # legal_doc_data = create_legal_document(prompt.data)
-    return generate_google_docs_from_markdown(md,creds)
+    try:
+        return generate_google_docs_from_markdown(md,creds)
+    except Exception as e:
+        return "An error occured. Please Try again!"
 
 @app.get("/callback")
 def callback(state,code):
