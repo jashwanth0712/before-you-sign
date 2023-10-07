@@ -100,4 +100,4 @@ async function sendBase64(data) {
     res();
     sendResponse({msg: "Message received"});
   });
-}
+
