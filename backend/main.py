@@ -3,7 +3,7 @@ from fastapi_sessions.frontends.implementations import SessionCookie, CookiePara
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi_sessions.backends.implementations import InMemoryBackend
 from uuid import UUID,uuid4
-from action_model_palm import action_function
+from action_model import action_function
 from BaseModels import SessionData, BasicVerifier, Base64, Email, Prompt
 from OCR import base64_to_text
 from chat_with_bot import chat_with_openai
