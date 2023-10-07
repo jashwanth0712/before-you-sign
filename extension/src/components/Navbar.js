@@ -1,14 +1,15 @@
-import logo from '../logo.svg';
+import React from "react";
 
-const Navbar = () => {
-    return ( 
-        <nav className="h-[100px] grid items-center">
-            <div className="flex items-center gap-5 mx-10">
-                {/* <img src={logo} alt="logo" width={40} height={40} className="md:h-16 md:w-16"/> */}
-                <h1 className='text-3xl md:text-5xl font-bold'>Dropbox ChatBOT</h1>
-            </div>
-        </nav>
-    );
+function Navbar({ onButtonClick }) {
+  return (
+    <nav className="h-[100px]">
+    <div className="navbar">
+      <button onClick={() => onButtonClick(1)}>Ai Lawyer</button>
+      <button onClick={() => onButtonClick(2)}>Highlighter</button>
+      <button onClick={() => onButtonClick(3)}>Generate</button>
+    </div>
+    </nav>
+  );
 }
- 
+
 export default Navbar;

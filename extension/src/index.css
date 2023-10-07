@@ -3,7 +3,7 @@
 @import 'tailwindcss/utilities';
 
 html, body, #root {
-  height: 800px;
+  height: auto;
   width: 500px;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -16,4 +16,75 @@ html, body, #root {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.loading .dot{
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background: #c1c1c1;
+  display: block;
+  float: left;
+  margin: 0 0 0 4px;
+  &:first-child{
+    margin: 0;
+  }
+  &.one{
+    animation: cycleOne 1s ease-in-out infinite;
+    animation-direction: normal;
+  }
+  &.two{
+    animation: cycleTwo 1s ease-in-out infinite;
+    animation-direction: normal;
+  }
+  &.three{
+    animation: cycleThree 1s ease-in-out infinite;
+    animation-direction: normal;
+  }
+}
+
+
+@keyframes cycleOne{
+  0%{
+    background: rgba(150, 150, 150, 0.4);
+  }
+  33.333%{
+    background: rgba(150, 150, 150, 1);
+  }
+  66.6667%{
+    background: rgba(150, 150, 150, 0.4);
+  }
+  100%{
+    background: rgba(150, 150, 150, 0.4);
+  }
+}
+
+@keyframes cycleTwo{
+  0%{
+    background: rgba(150, 150, 150, 0.4);
+  }
+  33.333%{
+    background: rgba(150, 150, 150, 0.4);
+  }
+  66.6667%{
+    background: rgba(150, 150, 150, 1);
+  }
+  100%{
+    background: rgba(150, 150, 150, 0.4);
+  }
+}
+
+@keyframes cycleThree{
+  0%{
+    background: rgba(150, 150, 150, 0.4);
+  }
+  33.333%{
+    background: rgba(150, 150, 150, 0.4);
+  }
+  66.6667%{
+    background: rgba(150, 150, 150, 0.4);
+  }
+  100%{
+    background: rgba(150, 150, 150, 1);
+  }
 }
