@@ -6,8 +6,6 @@ import React, { useRef, useEffect } from 'react'
 import background from '../background3.png';
 import Button_ from '../Button'
 
-
-
 async function getInitialResponse() {
 try {
         const res = await fetch(
@@ -63,57 +61,38 @@ try {
 }
 
 export default function Home() {
-    let conversation = []
 
-    let [chats, updateChats] = useState(conversation)
+    let [chats, updateChats] = useState([])
+    let [isChatLoading, updateIsChatLoading] = useState(false);
 
     const handleInputChange = async (value) => {
         let newChat = {
             response: false,
-            message: value
+            message: value,
+            isLoading: false
         }
         updateChats([...chats, newChat])
         scrollToBottom();
 
-        // console.log(chats);
-
+        updateIsChatLoading(true);
         let botResponse = undefined;
         console.log(value);
         botResponse = await getBotResponse(value);
         await console.log(botResponse);
-        // if(isFeedback) {
-        //     botResponse = await getBotResponse();
-        // } else {
-        // }
 
-        // if(botResponse["bot_response"] === "none") {
-        //     let feedbackChat = {
-        //         response: true,
-        //         message: "Sorry, I didn't get 😕. Help me improve by sending possible response for your question."
-        //     }
-        //     await updateChats([...chats, newChat, feedbackChat])
-        //     scrollToBottom();
-        //     updateFeedback(true);
-        // }
-        //  else {
-        //     let botChat = {
-        //         response: true,
-        //         message: botResponse["bot_response"]
-        //     }
-        //     await updateChats([...chats, newChat, botChat])
-        //     scrollToBottom();
-        //     updateFeedback(false);
-        // }
         let botChat = {
             response: true,
-            message: botResponse
+            message: botResponse,
+            isLoading: false
         }
-        await updateChats([...chats, newChat, botChat])
+        updateChats(prevChats => ([...prevChats, botChat]));
+        updateIsChatLoading(false);
+        // chats[chats.length - 1].message = await botResponse;
+        // chats[chats.length - 1].isLoading = false;
         scrollToBottom();
-        // updateFeedback(false);
     }
 
-    const chatContainerRef = useRef(null); // Define type as HTMLDivElement
+    const chatContainerRef = useRef(null);
     const scrollToBottom = () => {
         if (chatContainerRef.current) {
             chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
@@ -121,17 +100,36 @@ export default function Home() {
     };
 
     async function getDocumentData() {
+        updateIsChatLoading(true);
         let botResponse = undefined;
         botResponse = await getInitialResponse();
+        
         let botChat = {
             response: true,
-            message: botResponse
+            message: botResponse,
+            isLoading: false
         }
-        await updateChats([...chats, botChat])
+        updateChats([...chats, botChat]);
+        updateIsChatLoading(false);
+        // console.log(chats);
+        // chats[chats.length - 1].message = await botResponse;
+        // chats[chats.length - 1].isLoading = false;
         scrollToBottom();
     }
 
     useEffect(() => {
+        // const getresponse = async () => {
+        //     let botResponse = undefined;
+        //     botResponse = await getInitialResponse();
+
+        //     console.log(chats, botResponse);
+        //     console.log(chats[chats.length - 1]);
+        //     chats[chats.length - 1].message = botResponse;
+        //     chats[chats.length - 1].isLoading = false;
+        //     console.log("updated chats : ", chats);
+        //     updateChats(chats);
+        // }
+        // getresponse();
         scrollToBottom();
     }, [chats]);
 
@@ -151,8 +149,9 @@ export default function Home() {
                     <div className="w-full max-w-3xl">
                         <div ref={chatContainerRef} className='chatscroll flex flex-col gap-5 my-5 max-w-3xl max-h-[60vh] sm:max-h-[60vh] py-10 overflow-y-scroll'>
                             { chats.map((chat, index) => {
-                                return <Chat response={chat.response} text={chat.message} />
+                                return <Chat response={chat.response} text={chat.message} isLoading={chat.isLoading} />
                             }) }
+                            { isChatLoading && <Chat response={true} text={""} isLoading={true} /> }
                         </div>
                         <InputField getInputValue={handleInputChange} />
                     </div>

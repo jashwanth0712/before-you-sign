@@ -1,46 +1,35 @@
-(async () => {
-  console.log('run content script');
-  const pageLoaded = () => {
-    const buttonContainerExists = document.getElementsByClassName("square-ext-btn-container")[0];
-    console.log("we are in website");
-    if (!buttonContainerExists) {
-      let ele = document.getElementsByClassName(
-        "_action-bar-container_1pjms_5 brws-action-toolbar-actionbar _responsive_1pjms_9"
-      );
-      
-      const buttonContainer = document.createElement("div");
-      buttonContainer.className = "square-ext-btn-container";
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.type === "TABUPDATED") {
+    // Your code to run when the tab is updated goes here
+    console.log("Content script received a TABUPDATED message");
 
-      const button1 = document.createElement("button");
-      button1.textContent = "Open Popup 1";
-      button1.className = "square-ext-btn";
+    // You can insert code here to inject a button into the body, for example
+    injectButton();
+  }
+});
 
-      button1.addEventListener('click', () => {
-        // Redirect to https://square-ai-hackathon.vercel.app/
-        window.location.href = 'https://square-ai-hackathon.vercel.app/';
-      });
+function injectButton() {
+  // Create a button element
+  // Create a new button element
+var button = document.createElement("button");
 
-      const button2 = document.createElement("button");
-      button2.textContent = "Open Popup 2";
-      button2.className = "square-ext-btn";
+// Set the button's text
+button.textContent = "Click Me";
 
-      button2.addEventListener('click', () => {
-        // Redirect to another URL if needed
-        window.location.href = 'https://example.com/';
-      });
+// Apply CSS styles to the button
+button.style.position = "absolute";
+button.style.top = "0";
+button.style.left = "50%";
 
-      // Append buttons to the buttonContainer
-      buttonContainer.appendChild(button1);
-      buttonContainer.appendChild(button2);
+// Add an event listener to the button
+button.addEventListener("click", function() {
+  alert("Button Clicked!");
+});
 
-      // Find the squareup.com website's body element and append the buttonContainer
-      const body = document.querySelector("body");
-      if (body) {
-        ele[0].appendChild(buttonContainer);
-      }
-    }
-  };
+// Append the button to the body
+document.body.appendChild(button);
 
+<<<<<<< HEAD
   chrome.runtime.onMessage.addListener((obj, sender, response) => {
     const { type, value, videoId } = obj;
 
@@ -112,3 +101,6 @@ async function sendBase64(data) {
     res();
     sendResponse({msg: "Message received"});
   });
+=======
+}
+>>>>>>> e0aac9fd135ff2665242a760fd3e3779a9e07bce

@@ -1,7 +1,8 @@
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   console.log("checking listener");
   console.log("tab url" + tab.url);
-  if (tab.url && tab.url.includes("dropbox.com")) {
+  if (tab.url && tab.url.includes("app.hellosign.com")) {
+    console.log("inside");
     chrome.tabs.sendMessage(tabId, {
       type: "TABUPDATED",
     });

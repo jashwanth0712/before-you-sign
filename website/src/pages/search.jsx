@@ -12,9 +12,7 @@ const Search = () => {
   };
 
   async function handleGenerateClick(){
-    await get_auth()
-    const data = await sendprompt()
-    console.log(data)
+    get_auth()
     if (buttontext === 'Generate' && inputValue.trim() === '') {
       alert('Please enter text before generating the iframe.');
       return; // Don't proceed if input is empty for the first generation
@@ -50,9 +48,9 @@ const Search = () => {
 
 }
 
-async function get_auth() {
+function get_auth() {
   // console.log("Req body is",requestBody);
-  await fetch('https://dropbox-4zxc4m7upa-el.a.run.app/auth', {
+  fetch('https://dropbox-4zxc4m7upa-el.a.run.app/auth', {
       method: 'POST',
       headers: {
           "Content-Type": "application/json",
@@ -62,9 +60,11 @@ async function get_auth() {
 }).then(data => {
   const openwindow = window.open(data, '_blank');
     console.log(data);
+    sendprompt();
 });
 }
   
+
 
   return (
     <div className="flex flex-col items-center h-screen mt-[70px]">
