@@ -137,15 +137,12 @@ export default function Home() {
     }, []);
 
     return (
-        <section className="max-w-7xl bg-gradient-to-r from-black via-purple-950 to-black h-[93vh] w-full border mx-auto overflow-y-hidden z-[+1]">
-            <div className="w-12 h-12 bg-gradient-to-r from-black to-purple-900 rounded-full absolute top-[20vh] left-[20vw] filter blur-sm z-[-1]"></div>
-            <div className="w-12 h-12 bg-gradient-to-r from-black to-purple-900 rounded-full absolute top-[36vh] left-[36vw] filter blur-[2px] z-[-1]"></div>
-            <div className="w-12 h-12 bg-gradient-to-r from-black to-purple-900 rounded-full absolute top-[80vh] left-[30vw] filter blur-sm z-[-1]"></div>
+        <section className="max-w-7xl bg-gradient-to-r from-black via-purple-950 to-black h-[93vh] w-full border mx-auto overflow-y-hidden">
+            <Button_ />
             <section className='h-[93vh] w-full p-5 pt-[-10] pb-5'>
-                <div className="h-full w-full bg-primary bg-opacity-30 border border-white rounded-[40px] p-5 flex flex-col justify-end items-center">
+                <div className="h-full w-full bg-primary bg-opacity-30 p-5 flex flex-col justify-end items-center">
                     <div className="w-full max-w-3xl">
-                        <p>AI Lawyer</p>
-                        <div ref={chatContainerRef} className='chatscroll flex flex-col gap-5 my-5 max-w-3xl max-h-[60vh] sm:max-h-[60vh] py-10 overflow-x-hidden overflow-y-scroll'>
+                        <div ref={chatContainerRef} className='chatscroll flex flex-col gap-5 my-5 max-w-3xl max-h-[60vh] py-10 overflow-x-hidden overflow-y-scroll'>
                             { chats.map((chat, index) => {
                                 return <Chat response={chat.response} text={chat.message} isLoading={chat.isLoading} />
                             }) }
