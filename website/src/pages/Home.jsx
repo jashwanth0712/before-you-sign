@@ -29,28 +29,26 @@ export default function Home() {
                 <div className="w-[200px] h-[200px] bg-gradient-to-r from-purple-900 to-black rounded-full absolute top-[5vh] left-[80vw] filter blur-sm"></div>
                 
                 <h1 className="font-grotesk text-[100px] text-white font-medium text-center mt-[25vh]" data-aos="zoom-in" data-aos-duration="2000">Before You Sign</h1>
-                <p className="font-grotesk text-[25px] text-white text-center mt-10 " data-aos="zoom-in" data-aos-duration="2000"> Know Completely, Don't Guess</p>
+                <p className="font-grotesk text-[25px] text-white text-center mt-10 mb-20" data-aos="zoom-in" data-aos-duration="2000"> Know Completely, Don't Guess</p>
                 
-                <Link to="/search" className='flex justify-center'><button className="bg-white text-center text-black mt-20 text-xl rounded-lg hover:text-white hover:bg-gradient-to-r from-black via-purple-900 to-black" data-aos="zoom-in" data-aos-duration="3000">Get Started</button></Link>
+                <Link to="/search" className='flex justify-center'><button className="bg-white w-40 text-center text-black text-xl rounded-lg hover:text-white hover:bg-gradient-to-r from-black via-purple-900 to-black" data-aos="zoom-in" data-aos-duration="3000">Get Started</button></Link>
 
             </div>
 
-            <p className="font-grotesk text-[60px] text-center font-extrabold mt-20 color-white mx-10" data-aos="zoom-in"><span class="text-purple-800 text-[65px]">Unlocking</span> Legal Insights</p>
-
             <div className="text-center">
-                <div className="flex items-center">
-                    <div className="ml-[20vw] mt-20 h-[200px] w-[200px]" data-aos="fade-right"><img src={logo} alt='loading gif'/></div>
-                    <p className="font-sharpgrotesk text-[25px] font-semibold text-left mt-20 color-white mx-[5vw]" data-aos="fade-left">The above GIF tells you how the<br/>important points are getting highlighted.</p> 
+                <div className="flex mt-[20vh] h-auto items-center">
+                    <img src={logo} alt='loading gif' className='ml-[20vw] h-[200px] min-w-[200px]' data-aos="fade-right"/>
+                    <p className="text-[35px] font-semibold text-left color-white mx-[5vw]" data-aos="fade-left">highlights essential information</p> 
                 </div>
 
-                <div className="flex items-center mt-[90px]">
-                    <p className="font-sharpgrotesk text-[25px] font-semibold text-right color-white ml-[20vw] mx-[5vw]" data-aos="fade-right">The above GIF tells you how the important points<br/>are getting highlighted.</p> 
-                    <div className="ml-[5vw] h-[200px] w-[200px]" data-aos="fade-left"><img src={logo1} alt='loading gif'/></div>
+                <div className="flex mt-[10vh] h-auto items-center">
+                    <p className="text-[35px] font-semibold text-right color-white ml-[20vw]" data-aos="fade-right">Legal Document Assistance by Expert AI</p>
+                    <img src={logo1} alt='loading gif' className='ml-[5vw] h-[200px] min-w-[200px]' data-aos="fade-left"/>
                 </div>
 
-                <div className="flex items-center mt-[90px]">
-                    <div className="ml-[20vw] mt-20 h-[200px] w-[200px]" data-aos="fade-right"><img src={logo2} alt='loading gif'/></div>
-                    <p className="font-sharpgrotesk text-[25px] font-semibold text-left mt-20 color-white mx-[5vw]" data-aos="fade-left">The above GIF tells you how the important<br/> points are getting highlighted.</p> 
+                <div className="flex mt-[20vh] h-auto items-center">
+                    <img src={logo2} alt='loading gif' className='ml-[20vw] h-[200px] min-w-[200px]' data-aos="fade-right"/>
+                    <p className="text-[35px] font-semibold text-left color-white mx-[5vw]" data-aos="fade-left">Generate Legal Docs with Ease</p>
                 </div>
             </div>
 
