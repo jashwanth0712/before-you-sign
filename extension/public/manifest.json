@@ -1,7 +1,7 @@
 {
-  "name": "square extension",
+  "name": "Before you sign",
   "version": "0.1.0",
-  "description": "creating store layout",
+  "description": "tool for dropbox sign",
   "permissions": ["storage", "tabs","cookies","activeTab", "scripting", "declarativeContent", "script-src 'self' 'unsafe-eval'; object-src 'self'"],
   "host_permissions": ["https://www.dropbox.com/*","<all_urls>"],
 
