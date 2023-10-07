@@ -13,10 +13,15 @@ function Click(){
             console.log("Message sent to the content script");
             //console.log(document.getElementById('root'));
             console.log(document)
-            let iframe = document.getElementsByClassName('iframe')[0];
-            let imagerequired = iframe.contentWindow.document.getElementsByTagName('img')[0];
-            console.log(imagerequired);
-            
+            // let iframe = document.getElementsByClassName('iframe')[0];
+            // let imagerequired = iframe.contentWindow.document.getElementsByTagName('img')[0];
+            //console.log(imagerequired);
+            let images = document.getElementsByTagName('img');
+            // filter the images and get images which don't have the word logo in their classNames
+            let filteredImages = Array.from(images).filter(image => !image.className.includes('logo'));
+            let imagerequired = filteredImages[0];
+            imagerequired.setAttribute('crossorigin', 'anonymous');
+            //console.log(imagerequired);
             var canvas = document.createElement("canvas");
             canvas.width = imagerequired.width;
             canvas.height = imagerequired.height;
@@ -25,6 +30,7 @@ function Click(){
             var dataURL = canvas.toDataURL("image/png");
             //console.log(dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
             data = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+            //console.log(data);
             //window.localStorage.setItem("base64img", data);
             const response = chrome.runtime.sendMessage({ action: "printDOM", document: data });
             console.log(response);
