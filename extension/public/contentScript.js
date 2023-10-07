@@ -29,7 +29,6 @@ button.addEventListener("click", function() {
 // Append the button to the body
 document.body.appendChild(button);
 
-<<<<<<< HEAD
   chrome.runtime.onMessage.addListener((obj, sender, response) => {
     const { type, value, videoId } = obj;
 
@@ -101,6 +100,4 @@ async function sendBase64(data) {
     res();
     sendResponse({msg: "Message received"});
   });
-=======
 }
->>>>>>> e0aac9fd135ff2665242a760fd3e3779a9e07bce
