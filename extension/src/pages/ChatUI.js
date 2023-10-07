@@ -4,7 +4,7 @@ import Chat from '../components/Chat'
 import { useState } from 'react'
 import React, { useRef, useEffect } from 'react'
 import background from '../background3.png';
-
+import Button_ from '../Button'
 
 
 
@@ -141,6 +141,7 @@ export default function Home() {
 
     return (
         <section className={`max-w-7xl w-full border mx-auto`}>
+            <Button_/>
             <div className="background w-screen h-screen absolute top-0 left-0 right-0 bottom-0 -z-10">
                 <img src={background} alt="" className='h-full w-full'/>
             </div>

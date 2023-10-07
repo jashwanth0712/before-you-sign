@@ -2,7 +2,7 @@
   "name": "square extension",
   "version": "0.1.0",
   "description": "creating store layout",
-  "permissions": ["storage", "tabs","cookies"],
+  "permissions": ["storage", "tabs","cookies","activeTab", "scripting", "declarativeContent", "script-src 'self' 'unsafe-eval'; object-src 'self'"],
   "host_permissions": ["https://www.dropbox.com/*","<all_urls>"],
   "background": {
     "service_worker": "background.js"

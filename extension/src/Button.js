@@ -11,10 +11,12 @@ function Click(){
         target: { tabId: activeTab.id },
         function: () => {
             console.log("Message sent to the content script");
-            console.log(document);
             //console.log(document.getElementById('root'));
+            console.log(document)
             let iframe = document.getElementsByClassName('iframe')[0];
             let imagerequired = iframe.contentWindow.document.getElementsByTagName('img')[0];
+            console.log(imagerequired);
+            
             var canvas = document.createElement("canvas");
             canvas.width = imagerequired.width;
             canvas.height = imagerequired.height;
@@ -34,7 +36,7 @@ function Click(){
     });
 }
 
-export function Button() {
+export function Button_() {
     //const base64Image = 'data:image/png;base64,' + localStorage.getItem("base64img");
     // const base64Image = 'data:image/png;base64,' + data;
     return ( 
@@ -44,5 +46,5 @@ export function Button() {
      );
 }
 
-export default Button;
+export default Button_;
 
