@@ -182,6 +182,7 @@ def generate_google_docs_from_markdown(markdown_text,creds):
     # json.loads(creds_json), SCOPES) 
     # creds = flow.run_local_server(port=0)
     # # Create a Google Docs service object.
+    print("Creating a gdoc for the prompt...\n")
     service = build('docs', 'v1', credentials=creds)
     # Create a google drive service object.
     drive_service = build('drive', 'v3', credentials=creds)
@@ -278,7 +279,7 @@ def generate_google_docs_from_markdown(markdown_text,creds):
 
     # Create a permission for 'anyone with the link' (public visibility)
     permission = drive_service.permissions().create(fileId=document_id, body=permissions).execute()
-
+    print("Generated Document Successfully\n")
     return google_doc_link
 
 
