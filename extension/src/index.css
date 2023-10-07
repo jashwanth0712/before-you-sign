@@ -3,6 +3,7 @@
 @import 'tailwindcss/utilities';
 
 html, body, #root {
+  background-color: #282c3400;
   height: auto;
   width: 500px;
   margin: 0;

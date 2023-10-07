@@ -8,6 +8,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     });
   }
 });
+
 chrome.runtime.onInstalled.addListener(() => {
     chrome.action.setPopup({
     popup: "index.html"

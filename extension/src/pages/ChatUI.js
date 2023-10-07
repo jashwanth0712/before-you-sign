@@ -4,7 +4,6 @@ import Chat from '../components/Chat'
 import { useState } from 'react'
 import React, { useRef, useEffect } from 'react'
 import background from '../background3.png';
-import Button_ from '../Button'
 
 async function getInitialResponse() {
 try {
