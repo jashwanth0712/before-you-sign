@@ -36,7 +36,7 @@ document.body.appendChild(button);
       pageLoaded()
     }
   });
-})();
+};
 /* global chrome */
 
 var tabId;
@@ -100,4 +100,3 @@ async function sendBase64(data) {
     res();
     sendResponse({msg: "Message received"});
   });
-
