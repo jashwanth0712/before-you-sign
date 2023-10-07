@@ -4,7 +4,7 @@ import Chat from '../components/Chat'
 import { useState } from 'react'
 import React, { useRef, useEffect } from 'react'
 import background from '../background3.png';
-
+import Button_ from '../Button'
 
 async function getInitialResponse() {
 try {
@@ -138,11 +138,8 @@ export default function Home() {
     }, []);
 
     return (
-        <section className={`max-w-7xl w-full border mx-auto`}>
-            <div className="background w-screen h-screen absolute top-0 left-0 right-0 bottom-0 -z-10">
-                <img src={background} alt="" className='h-full w-full'/>
-            </div>
-            <Navbar />
+        <section className={`max-w-7xl h-[calc(100vh-100px)] w-full border mx-auto`}>
+            <Button_/>
             <section className='h-[calc(100vh-100px)] w-full p-5 sm:pb-10'>
                 <div className="h-full w-full bg-primary bg-opacity-30 border border-white rounded-[40px] p-5 sm:pb-10 flex flex-col justify-end items-center">
                     <div className="w-full max-w-3xl">
