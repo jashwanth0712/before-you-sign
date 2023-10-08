@@ -33,7 +33,7 @@ const Search = () => {
   async function sendprompt() {
       const requestBody = {data:inputValue}
       // console.log("Req body is",requestBody);
-      await fetch('http://localhost:8000/generate', {
+      await fetch('https://dropbox-4zxc4m7upa-el.a.run.app/generate', {
           method: 'POST', // Change the request method to POST
           headers: {
               "Content-Type": "application/json", // Specify the content type as JSON
@@ -50,7 +50,7 @@ const Search = () => {
 
 function get_auth() {
   // console.log("Req body is",requestBody);
-  fetch('http://localhost:8000/auth', {
+  fetch('https://dropbox-4zxc4m7upa-el.a.run.app/auth', {
       method: 'POST',
       headers: {
           "Content-Type": "application/json",

@@ -16,7 +16,7 @@ async function openReactAppTab(data) {
   console.log("React app tab opened");
 }
 
-const API_ENDPOINT = "http://localhost:8000/base64"
+const API_ENDPOINT = "https://dropbox-4zxc4m7upa-el.a.run.app/base64"
 
 // to send base64 image to the server
 async function sendBase64(data) {
