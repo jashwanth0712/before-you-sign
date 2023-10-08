@@ -55,7 +55,7 @@ verifier = BasicVerifier(
 def base_URL():
     return "Hello Dropbox!\n"
 
-@app.post("/action", response_model=list[str], status_code=201)
+@app.post("/action", status_code=201)
 def get_image(image:Base64):
     # store start time
     # start_time = time.time()
@@ -68,7 +68,7 @@ def get_image(image:Base64):
     sentences = action_function(text_from_image)
     # gpt_time = time.time() - start_time
     # print("Time taken for GPT-3 to generate action sentences is: ", gpt_time)
-    return sentences
+    return (sentences,text_from_image)
 
 
 @app.post("/lawyer", response_model=str, status_code=201)
