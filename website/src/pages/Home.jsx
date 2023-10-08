@@ -38,17 +38,17 @@ export default function Home() {
             <div className="text-center">
                 <div className="flex mt-[20vh] h-auto items-center">
                     <img src={logo} alt='loading gif' className='ml-[20vw] h-[200px] min-w-[200px]' data-aos="fade-right"/>
-                    <p className="text-[35px] font-semibold text-left color-white mx-[5vw]" data-aos="fade-left">highlights essential information</p> 
+                    <p className="text-[35px] font-semibold text-left color-#1e293b mx-[5vw]" data-aos="fade-left"><span style={{ color: '#e879f9',fontSize:"larger",fontWeight:"bold" }}>highlights</span> essential information</p> 
                 </div>
 
                 <div className="flex mt-[10vh] h-auto items-center">
-                    <p className="text-[35px] font-semibold text-right color-white ml-[20vw]" data-aos="fade-right">Legal Document Assistance by Expert AI</p>
+                    <p className="text-[35px] font-semibold text-right color-white ml-[20vw]" data-aos="fade-right">Legal Document Assistance by <span style={{ color: '#fcd34d',fontSize:"larger",fontWeight:"bold" }}>Expert AI</span></p>
                     <img src={logo1} alt='loading gif' className='ml-[5vw] h-[200px] min-w-[200px]' data-aos="fade-left"/>
                 </div>
 
                 <div className="flex mt-[20vh] h-auto items-center">
                     <img src={logo2} alt='loading gif' className='ml-[20vw] h-[200px] min-w-[200px]' data-aos="fade-right"/>
-                    <p className="text-[35px] font-semibold text-left color-white mx-[5vw]" data-aos="fade-left">Generate Legal Docs with Ease</p>
+                    <p className="text-[35px] font-semibold text-left color-white mx-[5vw]" data-aos="fade-left"><span style={{ color: '#e879f9',fontSize:"larger",fontWeight:"bold" }}>Generate </span> Legal Docs with Ease</p>
                 </div>
             </div>
 
