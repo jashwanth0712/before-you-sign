@@ -40,6 +40,10 @@ export function Button(props) {
                 //window.localStorage.setItem("base64img", data);
                 const response = chrome.runtime.sendMessage({ action: "printDOM", document: data });
                 console.log(response);
+    
+                localStorage.setItem("base64img", data);
+                props.updateBase64Image(data);
+
                 // base 64 image
                 //console.log(data);
             }

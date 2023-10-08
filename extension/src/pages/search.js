@@ -55,29 +55,13 @@ function get_auth() {
       headers: {
           "Content-Type": "application/json",
       },
-  })
-  
-  .then((response) => {
-    console.log("lol",response);
+  }).then((response) => {
     return response.json();
-})
-
-.then(data => {
-    const openwindow = window.open(data, '_blank');
+}).then(data => {
+  const openwindow = window.open(data, '_blank');
     console.log(data);
-
-    // Define a function to check if the window is closed
-    const checkWindowClosed = () => {
-        if (openwindow.closed) {
-            clearInterval(checkInterval); // Stop checking
-            sendprompt(); // Execute the sendprompt function
-        }
-    };
-
-    // Check every 500 milliseconds if the window is closed
-    const checkInterval = setInterval(checkWindowClosed, 500);
+    sendprompt();
 });
-
 }
   
 
@@ -99,7 +83,7 @@ function get_auth() {
         <input
           type="search"
           id="default-search"
-          className="flex-grow w-[700px] p-2 bg-transparent text-sm border ring-none focus:ring-none rounded-lg border-[var(--primary-light)] placeholder-gray-400 text-white focus:border-[var(--text-secondary)]"
+          className="flex-grow w-[360px] p-2 bg-transparent text-sm border ring-none focus:ring-none rounded-lg border-[var(--primary-light)] placeholder-gray-400 text-white focus:border-[var(--text-secondary)]"
           placeholder={generatedText ? '' : 'Your Prompt'}
           value={inputValue}
           onChange={handleInputChange}

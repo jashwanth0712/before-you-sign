@@ -9,7 +9,7 @@ import Button from '../Button.js';
 async function getInitialResponse() {
 try {
         const res = await fetch(
-            'http://localhost:8000/lawyer',
+            'https://dropbox-4zxc4m7upa-el.a.run.app/lawyer',
             {
                 method: 'POST',
                 headers: {
@@ -36,7 +36,7 @@ try {
 async function getBotResponse(user_query) {
 try {
         const res = await fetch(
-            'http://localhost:8000/lawyer',
+            'https://dropbox-4zxc4m7upa-el.a.run.app/lawyer',
             {
                 method: 'POST',
                 headers: {
@@ -120,7 +120,7 @@ export default function Home() {
     async function clearSession() {
         try {
             const res = await fetch(
-                'http://localhost:8000/clear_session',
+                'https://dropbox-4zxc4m7upa-el.a.run.app/clear_session',
                 {
                     method: 'POST',
                     headers: {
@@ -166,7 +166,6 @@ export default function Home() {
 
     return (
         <section className="max-w-7xl bg-gradient-to-r from-black via-purple-950 to-black h-[93vh] w-full border mx-auto overflow-y-hidden">
-            <Button/>
             <section className='h-[93vh] w-full p-5 pt-[-10] pb-5'>
                 <div className="h-full w-full bg-primary bg-opacity-30 p-5 flex flex-col justify-end items-center">
                     <div className="w-full max-w-3xl">
