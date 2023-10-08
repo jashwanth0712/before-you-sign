@@ -33,7 +33,7 @@ const Search = () => {
   async function sendprompt() {
       const requestBody = {data:inputValue}
       // console.log("Req body is",requestBody);
-      await fetch('https://dropbox-4zxc4m7upa-el.a.run.app/generate', {
+      await fetch('http://localhost:8000/generate', {
           method: 'POST', // Change the request method to POST
           headers: {
               "Content-Type": "application/json", // Specify the content type as JSON
@@ -50,18 +50,34 @@ const Search = () => {
 
 function get_auth() {
   // console.log("Req body is",requestBody);
-  fetch('https://dropbox-4zxc4m7upa-el.a.run.app/auth', {
+  fetch('http://localhost:8000/auth', {
       method: 'POST',
       headers: {
           "Content-Type": "application/json",
       },
-  }).then((response) => {
+  })
+  
+  .then((response) => {
+    console.log("lol",response);
     return response.json();
-}).then(data => {
-  const openwindow = window.open(data, '_blank');
+})
+
+.then(data => {
+    const openwindow = window.open(data, '_blank');
     console.log(data);
-    sendprompt();
+
+    // Define a function to check if the window is closed
+    const checkWindowClosed = () => {
+        if (openwindow.closed) {
+            clearInterval(checkInterval); // Stop checking
+            sendprompt(); // Execute the sendprompt function
+        }
+    };
+
+    // Check every 500 milliseconds if the window is closed
+    const checkInterval = setInterval(checkWindowClosed, 500);
 });
+
 }
   
 

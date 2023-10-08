@@ -6,3 +6,6 @@ backend/base64*
 *.jpg
 credentials.json
 token.json
+*.mp3
+
+backend/drop*.json

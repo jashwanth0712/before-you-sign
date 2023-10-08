@@ -8,7 +8,7 @@ import background from '../background3.png';
 async function getInitialResponse() {
 try {
         const res = await fetch(
-            'https://dropbox-4zxc4m7upa-el.a.run.app/lawyer',
+            'http://localhost:8000/lawyer',
             {
                 method: 'POST',
                 headers: {
@@ -35,7 +35,7 @@ try {
 async function getBotResponse(user_query) {
 try {
         const res = await fetch(
-            'https://dropbox-4zxc4m7upa-el.a.run.app/lawyer',
+            'http://localhost:8000/lawyer',
             {
                 method: 'POST',
                 headers: {
@@ -116,6 +116,29 @@ export default function Home() {
         scrollToBottom();
     }
 
+    async function clearSession() {
+        try {
+            const res = await fetch(
+                'http://localhost:8000/clear_session',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
+                    }
+                }
+            );
+    
+            if(res.ok) {
+                const data = await res.json();
+                return data;
+            }
+    
+        } catch(error) {
+            console.log('Something Went Wrong!', error);
+        }
+    }
+
     useEffect(() => {
         // const getresponse = async () => {
         //     let botResponse = undefined;
@@ -133,7 +156,11 @@ export default function Home() {
     }, [chats]);
 
     useEffect(() => {
-        getDocumentData();
+        // clear session post request`
+        clearSession();
+        // get the base64 images
+        // show welcome message
+        getDocumentData(); 
     }, []);
 
     return (
