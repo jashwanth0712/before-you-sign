@@ -55,7 +55,7 @@ verifier = BasicVerifier(
 def base_URL():
     return "Hello Dropbox!\n"
 
-@app.post("/action", response_model=list[str], status_code=201)
+@app.post("/action", status_code=201)
 def get_image(image:Base64):
     # store start time
     # start_time = time.time()
@@ -68,7 +68,7 @@ def get_image(image:Base64):
     sentences = action_function(text_from_image)
     # gpt_time = time.time() - start_time
     # print("Time taken for GPT-3 to generate action sentences is: ", gpt_time)
-    return sentences
+    return (sentences,text_from_image)
 
 
 @app.post("/lawyer", response_model=str, status_code=201)
@@ -110,7 +110,7 @@ def auth_google():
     Credentials = os.getenv("GOOGLE_DOCS_CREDENTIALS")
     creds_json = base64.b64decode(Credentials.encode('utf-8') + b'==').decode('utf-8')
     creds_json = json.loads(creds_json)
-    AUTH_CALLBACK_URL ="http://localhost:8000/callback"
+    AUTH_CALLBACK_URL ="https://dropbox-4zxc4m7upa-el.a.run.app/callback"
     SCOPES = ['https://www.googleapis.com/auth/documents', 'https://www.googleapis.com/auth/drive']
     global flow
     flow = Flow.from_client_config(
