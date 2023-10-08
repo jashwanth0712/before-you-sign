@@ -31,7 +31,7 @@ export default function Home() {
                 <h1 className="font-grotesk text-[100px] text-white font-medium text-center mt-[25vh]" data-aos="zoom-in" data-aos-duration="2000">Before You Sign</h1>
                 <p className="font-grotesk text-[25px] text-white text-center mt-10 mb-20" data-aos="zoom-in" data-aos-duration="2000"> Know Completely, Don't Guess</p>
                 
-                <Link to="/search" className='flex justify-center'><button className="bg-white w-40 text-center text-black text-xl rounded-lg hover:text-white hover:bg-gradient-to-r from-black via-purple-900 to-black" data-aos="zoom-in" data-aos-duration="3000">Get Started</button></Link>
+                <div className="text-center"><Link to="/search"><button className="bg-white w-40 text-center text-black text-xl rounded-lg hover:text-white hover:bg-black" data-aos="zoom-in" data-aos-duration="3000">Get Started</button></Link></div>
 
             </div>
 

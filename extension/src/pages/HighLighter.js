@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from "../Button";
+import Pulse from './Pulse';
 
 function getText(){
   //let response = localStorage.getItem('response');
@@ -26,6 +27,7 @@ function HighLighter() {
   return (
     <div className="flex flex-col h-screen items-center">
       <Button />
+      <Pulse />
       <section className= "text-white" dangerouslySetInnerHTML={{ __html: text }}>
       </section>
     </div>
