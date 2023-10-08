@@ -8,7 +8,7 @@ import background from '../background3.png';
 async function getInitialResponse() {
 try {
         const res = await fetch(
-            'http://localhost:8000/lawyer',
+            'https://dropbox-4zxc4m7upa-el.a.run.app/lawyer',
             {
                 method: 'POST',
                 headers: {
@@ -35,7 +35,7 @@ try {
 async function getBotResponse(user_query) {
 try {
         const res = await fetch(
-            'http://localhost:8000/lawyer',
+            'https://dropbox-4zxc4m7upa-el.a.run.app/lawyer',
             {
                 method: 'POST',
                 headers: {
@@ -119,7 +119,7 @@ export default function Home() {
     async function clearSession() {
         try {
             const res = await fetch(
-                'http://localhost:8000/clear_session',
+                'https://dropbox-4zxc4m7upa-el.a.run.app/clear_session',
                 {
                     method: 'POST',
                     headers: {
