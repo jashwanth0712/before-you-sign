@@ -3,9 +3,7 @@ import React from 'react';
 
 var data = "";
 
-
-
-export function Button_(props) {
+export function Button(props) {
     //const base64Image = 'data:image/png;base64,' + localStorage.getItem("base64img");
     // const base64Image = 'data:image/png;base64,' + data;
     function Click(){
@@ -17,7 +15,7 @@ export function Button_(props) {
             function: () => {
                 console.log("Message sent to the content script");
                 //console.log(document.getElementById('root'));
-                console.log(document)
+                //console.log(document)
                 // let iframe = document.getElementsByClassName('iframe')[0];
                 // let imagerequired = iframe.contentWindow.document.getElementsByTagName('img')[0];
                 //console.log(imagerequired);
@@ -25,7 +23,7 @@ export function Button_(props) {
                 // filter the images and get images which don't have the word logo in their classNames
                 let filteredImages = Array.from(images).filter(image => !image.className.includes('logo'));
                 let imagerequired = filteredImages[0];
-                console.log(imagerequired)
+                //console.log(imagerequired)
                 imagerequired.setAttribute('crossorigin', 'anonymous');
                 //console.log(imagerequired);
                 var canvas = document.createElement("canvas");
@@ -36,7 +34,7 @@ export function Button_(props) {
                 var dataURL = canvas.toDataURL("image/png");
                 //console.log(dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
                 data = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-                console.log(data)
+                //console.log(data)
 
                 //console.log(data);
                 //window.localStorage.setItem("base64img", data);
@@ -50,7 +48,7 @@ export function Button_(props) {
     }
     return ( 
         <>
-            <button id="newTabButton" onClick={() => Click()} class="bg-white p-4 rounded-lg">Click me</button>
+            <button id="newTabButton" onClick={() => Click()} class="bg-white p-4 w-5/12 rounded-lg">Click me</button>
             
       {data ? (
         <img src={data} alt="Received Image" />
@@ -62,5 +60,5 @@ export function Button_(props) {
      );
 }
 
-export default Button_;
+export default Button;
 

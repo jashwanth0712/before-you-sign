@@ -97,6 +97,8 @@ async function sendBase64(data) {
         .then((responseData) => {
             // Handle the response from the server if needed
             console.log('Server response:', responseData);
+            // store the response in local storage
+            localStorage.setItem("response", JSON.stringify(responseData));
         })
         .catch((error) => {
             // Handle any errors that occurred during the request

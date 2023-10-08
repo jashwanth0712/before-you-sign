@@ -4,6 +4,7 @@ import Chat from '../components/Chat'
 import { useState } from 'react'
 import React, { useRef, useEffect } from 'react'
 import background from '../background3.png';
+import Button from '../Button.js';
 
 async function getInitialResponse() {
 try {
@@ -165,7 +166,7 @@ export default function Home() {
 
     return (
         <section className="max-w-7xl bg-gradient-to-r from-black via-purple-950 to-black h-[93vh] w-full border mx-auto overflow-y-hidden">
-            <Button_ />
+            <Button/>
             <section className='h-[93vh] w-full p-5 pt-[-10] pb-5'>
                 <div className="h-full w-full bg-primary bg-opacity-30 p-5 flex flex-col justify-end items-center">
                     <div className="w-full max-w-3xl">
