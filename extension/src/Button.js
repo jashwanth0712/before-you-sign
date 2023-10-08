@@ -53,12 +53,6 @@ export function Button(props) {
     return ( 
         <>
             <button id="newTabButton" onClick={() => Click()} class="bg-white p-4 w-5/12 rounded-lg">Click me</button>
-            
-      {data ? (
-        <img src={data} alt="Received Image" />
-      ) : (
-        <p>Waiting for the image...</p>
-      )}
     
          </>
      );
