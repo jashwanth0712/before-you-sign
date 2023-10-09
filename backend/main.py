@@ -14,6 +14,7 @@ from create_legal_document_palm import create_legal_document
 from create_docs import generate_google_docs_from_markdown
 from typing import Annotated
 import requests
+from dropbox import dropbox_sign
 from google.cloud import storage
 from google_auth_oauthlib.flow import Flow
 
@@ -135,6 +136,10 @@ def callback(state,code):
     creds = flow.credentials
     return "Authentication is successful! Please close this window to proceed!"
 
+@app.post("/dropbox_sign")
+def sendSignatureDropbox(doc_url: str):
+    print("Sending the document for signature\n")
+    dropbox_sign(doc_url)
 
 @app.post("/clear_session")
 async def clear_user_session(session_id: UUID = Depends(cookie)):
