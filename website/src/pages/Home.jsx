@@ -15,7 +15,7 @@ export default function Home() {
     },[])
     return (
         <div>
-            <div class="mt-[-38px] bg-gradient-to-r from-black via-purple-950 to-black h-screen">
+            <div class="mt-[-38px]  bg-gradient-to-r from-black via-purple-950 to-black min-h-screen h-auto">
                 <div className="relative w-20 h-20 overflow-hidden filter blur-sm">
                     <div className="w-40 h-40 bg-gradient-to-r from-black to-purple-900 rounded-full absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 "></div>
                 </div>
@@ -57,10 +57,8 @@ export default function Home() {
                 <div className=" mt-20 h-[500px] w-[1000px]" data-aos="zoom-in" data-aos-duration='2000'><img src={image} alt='loading gif'/></div>
             </div>
 
-            <div className="overflow-x-hidden overflow-y-hidden bg-starfield">
-                <p className="font-grotesk text-xl text-center mt-40 color-white mx-10" data-aos="zoom-in">Unlocking Legal Insights: Your AI-Powered Legal Advisor for Document Questions</p> 
-                <p className="font-grotesk text-xl text-center mt-40 color-white mx-10" data-aos="zoom-in">The above GIF tells you how the important points are getting highlighted.</p> 
-                <p className="font-grotesk text-xl text-center mt-40 color-white mx-10" data-aos="zoom-in">The above GIF tells you how the important points are getting highlighted.</p> 
+            <div className="bg-purple-800 mt-[5vh] h-[5vh]">
+                <p className='text-center text-xl'>Developed by @Team last minute 🧡<span className='text-purple-800'>da</span></p>
             </div>
         </div>
     );

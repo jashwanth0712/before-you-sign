@@ -26,13 +26,10 @@ function HighLighter() {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="flex flex-col h-screen items-center">
+    <div className="flex flex-col h-[93vh] items-center max-w-7xl w-full mx-10">
       <Button />
-
       <Pulse />
-      <section className= "text-white" dangerouslySetInnerHTML={{ __html: text }}></section>
-      <section className= "text-black bg-white mx-5 rounded-lg p-5" dangerouslySetInnerHTML={{ __html: text }}>
-      </section>
+      {/* <section className= "text-black bg-white mx-5 rounded-lg p-5" dangerouslySetInnerHTML={{ __html: text }}></section> */}
     </div>
   );
 }
