@@ -13,7 +13,7 @@ def action_function(legal_document_text):
 
   completion = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
-    messages=[{"role": "system","content":"Output all the key sentences that are really important in a legal perspective as a proper JSON array, say or do nothing else, just output the list"},
+    messages=[{"role": "system","content":"Output all the key sentences that are really important in a legal,financial,fiduciary and regulatory  perspective as a proper JSON array, say or do nothing else, just output the list"},
               {"role": "user", "content":legal_document_text}],
     temperature = 0.5
   )
