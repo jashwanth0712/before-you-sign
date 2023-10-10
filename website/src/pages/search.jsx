@@ -157,7 +157,6 @@ function get_auth() {
               className="flex-grow w-[40vh] p-2 bg-transparent text-sm border rounded-lg border-grey-600 placeholder-gray-400 text-white focus:border-[var(--text-secondary)]"
               placeholder={generatedText ? '' : 'Your Prompt'}
               value={inputValue}
-              onKeyUp={handleKeyPress}
               onChange={handleInputChange}
             />
             <button className="text-md ml-[1vw] text-[var(--primary)] bg-[var(--text)] " onClick={sendMail}>
