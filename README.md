@@ -104,6 +104,11 @@ Generate legal documents effortlessly and request signatures using Dropbox Sign 
    ```
    npm install
    ```
+- Run the following command to build the extension:
+   ```
+   npm run build
+   ```
+- This will create a `build` folder within the extension folder.
 
 **3. Unpack the Extension:**
 
@@ -129,6 +134,7 @@ Generate legal documents effortlessly and request signatures using Dropbox Sign 
 
 - Click on the extension icon to open and start using its features, including the Legal Chatbot, Text Highlighter, and Document Generator.
 
+**Note: If you prefer an alternative download method, you can download the `build` folder directly by downloading from [this link](https://drive.google.com/drive/folders/1eFvtfvu24le5Y3rStvWwkr4U9YgWvSIq?usp=sharing).**
 
 ## Tech Stack 🛠️
 
