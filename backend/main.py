@@ -17,6 +17,7 @@ import requests
 from dropbox import dropbox_sign
 from create_send_req import send_req_url,send_req_file
 from google.cloud import storage
+from get_sign import get_signature_request
 from google_auth_oauthlib.flow import Flow
 
 app = FastAPI()
@@ -226,3 +227,45 @@ def create_document(email: str, name: str,doc: UploadFile = File(...)):
         doc.file.close()
     res = send_req_file(email,name,doc.filename)
     return res
+
+@app.post("/tags")
+def tag_parser(prompt: str):
+    """
+    Fetches the prompt from front-end and executes the functions
+    based on the tags returned by gpt_parser
+    
+    tags:
+        - newsig -> request new signature, either from a url or file upload **
+        - checksig -> check status of signature request of a document 
+        - revunsig -> review unsigned signature requests sent by user
+        - filtdocdate -> filter signed documents by date
+        - rempeep -> remind people to sign a document
+        
+    params: prompt
+    returns: None
+    """
+    # tags = gpt_parser(prompt)
+    tags = []
+    for tag in tags:
+        if tag == "newsig":
+            return "newsig"
+        elif tag == "checksig":
+            return "checksig"
+        elif tag == "revunsig":
+            return "revunsig"
+        elif tag == "filtdocdate":
+            return "filtdocdate"
+        elif tag == "rempeep":
+            return "rempeep"
+        else:
+            return "Invalid tag"
+    
+
+@app.get("/signature")
+def get_signature(token:str, sign_id: str):
+    res = get_signature_request(token,sign_id)
+    return res
+
+@app.get("/list_signatures")
+def list_signature():
+    return "Hello Dropbox from SignWave~!\n"
