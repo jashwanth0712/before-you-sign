@@ -15,6 +15,7 @@ from create_docs import generate_google_docs_from_markdown
 from typing import Annotated
 import requests
 from dropbox import dropbox_sign
+from create_send_req import send_req_url,send_req_file
 from google.cloud import storage
 from google_auth_oauthlib.flow import Flow
 
@@ -140,6 +141,7 @@ def callback(state,code):
 def sendSignatureDropbox(doc_url: str):
     print("Sending the document for signature\n")
     dropbox_sign(doc_url)
+    return "Document succesfully sent!"
 
 @app.post("/clear_session")
 async def clear_user_session(session_id: UUID = Depends(cookie)):
@@ -205,3 +207,22 @@ async def put_audio(file: UploadFile = File(...),exp_time: int | None = 3600):
             f.write(doc.content)
             print("Audio successfully Fetched from the URL\n")
         return signed_url
+    
+@app.post("/create/url")
+def create_document(doc_url: str, email: str, name: str):
+    res = send_req_url(doc_url,email,name)
+    return res
+
+@app.post("/create/file")
+def create_document(email: str, name: str,doc: UploadFile = File(...)):
+    try:
+        contents = doc.file.read()
+        with open(doc.filename, 'wb') as f:
+            f.write(contents)
+        print("Document written succesfully")
+    except Exception:
+        return {"message": "There was an error uploading the file. Please try again"}
+    finally:
+        doc.file.close()
+    res = send_req_file(email,name,doc.filename)
+    return res
