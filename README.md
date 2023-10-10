@@ -36,7 +36,7 @@ Before you sign can help you to protect yourself and your loved ones from legal 
 
 # How Before you sign works
 
-![Workflow Diagram](https://github.com/jashwanth0712/before-you-sign/blob/main/website/src/assets/images/OPEN%20AI%20(1).png)
+![Workflow Diagram](https://github.com/jashwanth0712/before-you-sign/blob/main/website/src/assets/images/how%20it%20works.jpg)
 
 ## Lawyer Chatbot 👩‍⚖️
 
