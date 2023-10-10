@@ -20,14 +20,14 @@ export default function Home() {
                     <div className="w-40 h-40 bg-gradient-to-r from-black to-purple-900 rounded-full absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 "></div>
                 </div>
 
-                <div className="w-12 h-12 bg-gradient-to-r from-black to-purple-900 rounded-full absolute top-[20vh] left-[20vw] filter blur-sm"></div>
-                <div className="w-12 h-12 bg-gradient-to-r from-black to-purple-900 rounded-full absolute top-[36vh] left-[36vw] filter blur-[2px]"></div>
-                <div className="w-12 h-12 bg-gradient-to-r from-black to-purple-900 rounded-full absolute top-[80vh] left-[30vw] filter blur-sm"></div>
-                <div className="w-[80px] h-[80px] bg-gradient-to-r from-black to-purple-900 rounded-full absolute top-[65vh] left-[10vw] filter blur"></div>
-                <div className="w-[100px] h-[100px] bg-gradient-to-r from-purple-500 to-black rounded-full absolute top-[70vh] left-[75vw] blur-[1.5px]"></div>
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-900 to-black rounded-full absolute top-[20vh] left-[60vw] filter blur-sm"></div>
-                <div className="w-[200px] h-[200px] bg-gradient-to-r from-purple-900 to-black rounded-full absolute top-[5vh] left-[80vw] filter blur-sm"></div>
-                
+                <div className="w-12 h-12 bg-gradient-to-r from-black to-purple-900 rounded-full absolute top-[20vh] left-[20vw] filter blur-sm animate-bounce duration-100" style={{ animationDuration: '2s' }}></div>
+                <div className="w-12 h-12 bg-gradient-to-r from-black to-purple-900 rounded-full absolute top-[36vh] left-[36vw] filter blur-[2px] animate-bounce" style={{ animationDuration: '2s' }}></div>
+                <div className="w-12 h-12 bg-gradient-to-r from-black to-purple-900 rounded-full absolute top-[80vh] left-[30vw] filter blur-sm animate-bounce" style={{ animationDuration: '1s' }}></div>
+                <div className="w-[80px] h-[80px] bg-gradient-to-r from-black to-purple-900 rounded-full absolute top-[65vh] left-[10vw] filter blur animate-bounce" style={{ animationDuration: '2s' }}></div>
+                <div className="w-[100px] h-[100px] bg-gradient-to-r from-purple-500 to-black rounded-full absolute top-[70vh] left-[75vw] blur-[1.5px] animate-bounce" style={{ animationDuration: '3s' }}></div>
+                <div className="w-12 h-12 bg-gradient-to-r from-purple-900 to-black rounded-full absolute top-[20vh] left-[60vw] filter blur-sm animate-bounce" style={{ animationDuration: '3s' }}></div>
+                <div className="w-[200px] h-[200px] bg-gradient-to-r from-purple-900 to-black rounded-full absolute top-[5vh] left-[80vw] filter blur-sm animate-bounce" style={{ animationDuration: '5s' }}></div>
+            
                 <h1 className="font-grotesk text-[100px] text-white font-medium text-center mt-[25vh]" data-aos="zoom-in" data-aos-duration="2000">Before You Sign</h1>
                 <p className="font-grotesk text-[25px] text-white text-center mt-10 mb-20" data-aos="zoom-in" data-aos-duration="2000"> Know Completely, Don't Guess</p>
                 

@@ -3,7 +3,7 @@ import React from "react";
 function Pulse() {
     return(
         <div className="max-w-5xl w-full">
-            <div class="border border-blue-300 shadow rounded-md mx-[40px] mt-4 p-4">
+            <div class="border border-white shadow rounded-md mx-[40px] mt-4 p-4">
                 <div class="animate-pulse flex flex-col">
 
                     <div class="flex-1 space-y-6 py-1">

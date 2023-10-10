@@ -8,6 +8,13 @@
   "background": {
     "service_worker": "background.js"
   },
+
+  "icons": {
+    "16": "icon_1.png",
+    "48": "icon_1.png",
+    "128": "icon_1.png"
+  },
+  
   
   "content_scripts": [
     {

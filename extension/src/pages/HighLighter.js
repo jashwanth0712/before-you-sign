@@ -17,7 +17,9 @@ function getText(){
 }
 
 function HighLighter() {
-  const [text, setText] = useState('mou photos<br>clickable links<br>youtbe testimonials<br>justify the content<br>director sir message<br>animation in the<br>width 40%<br>fontsize x-large<br><mark class="bg-yellow-500 text-white font-bold">ECE Co-ordinators:</mark><br><mark class="bg-yellow-500 text-white font-bold">To be updated:</mark><br><mark class="bg-yellow-500 text-white font-bold">Premchand Pavar</mark><br><mark class="bg-yellow-500 text-white font-bold">Praneeth Nayakanti</mark><br><mark class="bg-yellow-500 text-white font-bold">Mech Co-ordinators</mark><br><mark class="bg-yellow-500 text-white font-bold">D Sai Karthikeya</mark><br><mark class="bg-yellow-500 text-white font-bold">Paul Abhishek</mark><br><mark class="bg-yellow-500 text-white font-bold">M Pavan Kalyan</mark><br><mark class="bg-yellow-500 text-white font-bold">A Yashvardhan Sai</mark><br><mark class="bg-yellow-500 text-white font-bold">Naveen Chakravarthi P</mark><br><mark class="bg-yellow-500 text-white font-bold">Sagar Kumar Jha</mark><br><mark class="bg-yellow-500 text-white font-bold">Ragunanthan</mark><br><mark class="bg-yellow-500 text-white font-bold">Design</mark><br><mark class="bg-yellow-500 text-white font-bold">Vignesh</mark><br><mark class="bg-yellow-500 text-white font-bold">Update details of Prathyush - Joint sec</mark><br>');
+  // const [text, setText] = useState('mou photos<br>clickable links<br>youtbe testimonials<br>justify the content<br>director sir message<br>animation in the<br>width 40%<br>fontsize x-large<br><mark class="bg-yellow-500 text-white font-bold">ECE Co-ordinators:</mark><br><mark class="bg-yellow-500 text-white font-bold">To be updated:</mark><br><mark class="bg-yellow-500 text-white font-bold">Premchand Pavar</mark><br><mark class="bg-yellow-500 text-white font-bold">Praneeth Nayakanti</mark><br><mark class="bg-yellow-500 text-white font-bold">Mech Co-ordinators</mark><br><mark class="bg-yellow-500 text-white font-bold">D Sai Karthikeya</mark><br><mark class="bg-yellow-500 text-white font-bold">Paul Abhishek</mark><br><mark class="bg-yellow-500 text-white font-bold">M Pavan Kalyan</mark><br><mark class="bg-yellow-500 text-white font-bold">A Yashvardhan Sai</mark><br><mark class="bg-yellow-500 text-white font-bold">Naveen Chakravarthi P</mark><br><mark class="bg-yellow-500 text-white font-bold">Sagar Kumar Jha</mark><br><mark class="bg-yellow-500 text-white font-bold">Ragunanthan</mark><br><mark class="bg-yellow-500 text-white font-bold">Design</mark><br><mark class="bg-yellow-500 text-white font-bold">Vignesh</mark><br><mark class="bg-yellow-500 text-white font-bold">Update details of Prathyush - Joint sec</mark><br>');
+
+  const [text, setText] = useState('');
   // call setText with the response from the server in regular intervals
   useEffect(() => {
     const interval = setInterval(() => {
@@ -26,10 +28,9 @@ function HighLighter() {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="flex flex-col h-[93vh] items-center max-w-7xl w-full mx-10">
+    <div className="flex flex-col h-[93vh] items-center max-w-7xl w-full mx-10 bg-gradient-to-r from-blue-300 to-[#A796FD]">
       <Button />
-      <Pulse />
-      {/* <section className= "text-black bg-white mx-5 rounded-lg p-5" dangerouslySetInnerHTML={{ __html: text }}></section> */}
+      {text==''?(<Pulse />):(<section className= "text-black bg-white mx-5 rounded-lg p-5" dangerouslySetInnerHTML={{ __html: text }}></section>)}
     </div>
   );
 }
