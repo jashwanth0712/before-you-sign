@@ -1,14 +1,28 @@
 from pprint import pprint
-from dropbox_sign import ApiClient, ApiException, Configuration, apis, models
+import os
+import gdown
+from dropbox_sign import \
+    ApiClient, ApiException, Configuration, apis, models
 
-def send_signature_request(api_key, signers, cc_email_addresses, files, metadata, test_mode=True,
-                           title="", subject="", message=""):
-    configuration = Configuration(
-        username=api_key,
-    )
+configuration = Configuration(
+    username=os.getenv("DROPBOX_KEY"),
+)
 
+def dropbox_sign(doc_url):
     with ApiClient(configuration) as api_client:
         signature_request_api = apis.SignatureRequestApi(api_client)
+
+        signer_1 = models.SubSignatureRequestSigner(
+            email_address="sasankmadati@gmail.com",
+            name="Sasank",
+            order=0,
+        )
+
+        signer_2 = models.SubSignatureRequestSigner(
+            email_address="alteek05@gmail.com",
+            name="Arthur",
+            order=1,
+        )
 
         signing_options = models.SubSigningOptions(
             draw=True,
@@ -17,26 +31,23 @@ def send_signature_request(api_key, signers, cc_email_addresses, files, metadata
             phone=True,
             default_type="draw",
         )
-
-        field_options = models.SubFieldOptions(
-            date_format="DD - MM - YYYY",
-        )
-
+        gdown.download(doc_url, 'document.pdf',fuzzy=True,format="pdf",quiet=True)
         data = models.SignatureRequestSendRequest(
-            title=title,
-            subject=subject,
-            message=message,
-            signers=signers,
-            cc_email_addresses=cc_email_addresses,
-            files=files,
-            metadata=metadata,
+            title="Hello World",
+            subject="Lawyer RP",
+            message="Please sign this NDA and then we can discuss more. Let me know if you have any questions.",
+            signers=[signer_1, signer_2],
+            files=[open("document.pdf", "rb")],
+            metadata={
+                "custom_id": 1234,
+                "custom_text": "NDA #9",
+            },
             signing_options=signing_options,
-            field_options=field_options,
-            test_mode=test_mode,
+            test_mode=True,
         )
 
         try:
             response = signature_request_api.signature_request_send(data)
-            pprint(response)
+            # pprint(response)
         except ApiException as e:
             print("Exception when calling Dropbox Sign API: %s\n" % e)

@@ -14,7 +14,10 @@ from create_legal_document_palm import create_legal_document
 from create_docs import generate_google_docs_from_markdown
 from typing import Annotated
 import requests
+from dropbox import dropbox_sign
+from create_send_req import send_req_url,send_req_file
 from google.cloud import storage
+from get_sign import get_signature_request
 from google_auth_oauthlib.flow import Flow
 
 app = FastAPI()
@@ -135,6 +138,11 @@ def callback(state,code):
     creds = flow.credentials
     return "Authentication is successful! Please close this window to proceed!"
 
+@app.post("/dropbox_sign")
+def sendSignatureDropbox(doc_url: str):
+    print("Sending the document for signature\n")
+    dropbox_sign(doc_url)
+    return "Document succesfully sent!"
 
 @app.post("/clear_session")
 async def clear_user_session(session_id: UUID = Depends(cookie)):
@@ -200,3 +208,64 @@ async def put_audio(file: UploadFile = File(...),exp_time: int | None = 3600):
             f.write(doc.content)
             print("Audio successfully Fetched from the URL\n")
         return signed_url
+    
+@app.post("/create/url")
+def create_document(doc_url: str, email: str, name: str):
+    res = send_req_url(doc_url,email,name)
+    return res
+
+@app.post("/create/file")
+def create_document(email: str, name: str,doc: UploadFile = File(...)):
+    try:
+        contents = doc.file.read()
+        with open(doc.filename, 'wb') as f:
+            f.write(contents)
+        print("Document written succesfully")
+    except Exception:
+        return {"message": "There was an error uploading the file. Please try again"}
+    finally:
+        doc.file.close()
+    res = send_req_file(email,name,doc.filename)
+    return res
+
+@app.post("/tags")
+def tag_parser(prompt: str):
+    """
+    Fetches the prompt from front-end and executes the functions
+    based on the tags returned by gpt_parser
+    
+    tags:
+        - newsig -> request new signature, either from a url or file upload **
+        - checksig -> check status of signature request of a document 
+        - revunsig -> review unsigned signature requests sent by user
+        - filtdocdate -> filter signed documents by date
+        - rempeep -> remind people to sign a document
+        
+    params: prompt
+    returns: None
+    """
+    # tags = gpt_parser(prompt)
+    tags = []
+    for tag in tags:
+        if tag == "newsig":
+            return "newsig"
+        elif tag == "checksig":
+            return "checksig"
+        elif tag == "revunsig":
+            return "revunsig"
+        elif tag == "filtdocdate":
+            return "filtdocdate"
+        elif tag == "rempeep":
+            return "rempeep"
+        else:
+            return "Invalid tag"
+    
+
+@app.get("/signature")
+def get_signature(token:str, sign_id: str):
+    res = get_signature_request(token,sign_id)
+    return res
+
+@app.get("/list_signatures")
+def list_signature():
+    return "Hello Dropbox from SignWave~!\n"
