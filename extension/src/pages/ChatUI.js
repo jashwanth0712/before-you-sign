@@ -165,11 +165,11 @@ export default function Home() {
     }, []);
 
     return (
-        <section className="max-w-7xl bg-gradient-to-r from-black via-purple-950 to-black h-[93vh] w-full border mx-auto overflow-y-hidden">
-            <section className='h-[93vh] w-full p-5 pt-[-10] pb-5'>
-                <div className="h-full w-full bg-primary bg-opacity-30 p-5 flex flex-col justify-end items-center">
-                    <div className="w-full max-w-3xl">
-                        <div ref={chatContainerRef} className='chatscroll flex flex-col gap-5 my-5 max-w-3xl max-h-[60vh] py-10 overflow-x-hidden overflow-y-scroll'>
+        <section className="max-w-7xl backdrop-blur-lg h-[93vh] w-full border mx-auto overflow-y-hidden">
+            <section className='h-[93vh] w-full p-5 pt-[-10] pb-5 bg-gradient-to-r from-blue-300 to-[#A796FD]'>
+                <div className="h-full w-full bg-white border-2 rounded-lg border-primaryPurple bg-opacity-30 p-5 flex flex-col justify-end items-center">
+                    <div className="w-full max-w-3xl" style={{ backdropFilter: 'blur(20px)' }}>
+                        <div ref={chatContainerRef} className='chatscroll flex flex-col gap-5 my-5 max-w-3xl max-h-[60vh] py-10 overflow-x-hidden overflow-y-scroll' >
                             { chats.map((chat, index) => {
                                 return <Chat response={chat.response} text={chat.message} isLoading={chat.isLoading} />
                             }) }

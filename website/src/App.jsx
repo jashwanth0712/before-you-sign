@@ -8,6 +8,8 @@ import Navbar from './component/Navbar';
 import { useEffect } from 'react';
 import Highlighter from './pages/Highlighter';
 import Search from './pages/search';
+import Sendmail from './pages/Sendmail';
+
 function App() {
   useEffect(() => {
     console.log('App mounted');
@@ -21,6 +23,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/highlighter/:id" element={<Highlighter />} />
+          <Route path="/sendmail" element={<Sendmail />} />
           {/* <Route path="/AuthSuccess" element={<AuthSuccess />} /> */}
         </Routes>
       </div>

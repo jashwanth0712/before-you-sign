@@ -1,5 +1,9 @@
 /* global chrome */
 import React, { useEffect, useState } from "react";
+import chatbot from '../chatbot.gif';
+import generator from '../generator.gif';
+import highlight from '../highlight.gif';
+
 
 function Navbar({ onButtonClick }) {
   const [isCorrectUrl, setIsCorrectUrl] = useState(false);
@@ -33,11 +37,20 @@ function Navbar({ onButtonClick }) {
 
   if (true || isCorrectUrl){
     return (
-      <nav className="h-[40px] rounded-lg w-full text-center bg-gradient-to-r from-black via-purple-950 to-black backdop-blur-lg pt-1">
-        <div className="navbar">
-          <button onClick={() => onButtonClick(1)} className="bg-white mr-3 pl-2 pr-2 font-grotesk rounded-lg font-medium text-base text-black p-1">Ai Lawyer</button>
-          <button onClick={() => onButtonClick(2)} className="bg-white mr-3 pl-2 pr-2 font-grotesk rounded-lg font-medium text-base text-black p-1">Highlighter</button>
-          <button onClick={() => {window.open("https://before-you-sign-it.vercel.app/search", "_blank");}} className="bg-white mr-3 pl-2 pr-2 font-grotesk rounded-lg font-medium text-base text-black p-1">Generate</button>
+      <nav className="bg-gradient-to-r from-blue-300 to-[#A796FD] w-full">
+        <div className="navbar flex items-center justify-center" style={{height:'6rem'}}>
+          <button onClick={() => onButtonClick(1)} className="flex flex-col items-center mr-10 font-grotesk font-medium text-small hover:h-15 hover:width-15">
+            <img src={chatbot} alt="chatbot" className="rounded-lg h-10 w-10"/>
+            <p className="mt-1 text-white">AI Lawyer</p>
+          </button>
+          <button onClick={() => onButtonClick(2)} className="flex flex-col items-center ml-10 mr-10 font-grotesk font-medium text-small">
+            <img src={highlight} alt="highlight" className="rounded-lg h-10 w-10"/>
+            <p className="mt-1 text-white">HighLight</p>
+          </button>
+          <button onClick={() => {window.open("https://before-you-sign-it.vercel.app/search", "_blank");}} className="flex flex-col items-center ml-10 font-grotesk font-medium text-small">
+            <img src={generator} alt="generate" className="rounded-lg h-10 w-10"/>
+            <p className="mt-1 text-white">Generate</p>
+          </button>
      </div>
       </nav>
     );
